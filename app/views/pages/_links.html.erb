@@ -1,5 +1,5 @@
 <% unless defined? classes %>
-    <%= link_to "<li>#{page.name}</li>".html_safe, page.url.empty? ? page : page.url %>
+    <li><%= link_to "#{page.name}".html_safe, page.url.empty? ? page : page.url %></li>
 <% else %>
-    <%= link_to "<li class='#{classes}'>#{page.name}</li>".html_safe, page.url.empty? ? page : page.url %>
+    <li class='#{classes}'><%= link_to "#{page.name}".html_safe, page.url.empty? ? page : page.url %></li>
 <% end %>

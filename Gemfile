@@ -36,7 +36,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
-gem 'frame'
 
 gem "mysql2"
 gem "rspec-rails", :group => "test, development"

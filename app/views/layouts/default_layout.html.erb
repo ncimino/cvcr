@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title><%= yield(:title) %></title>
   <%= yield :head %>
 </head>
 <body>
-<div class="container">
-  <header>
-      <%= yield :header %>
-  </header>
+<div class="container-fluid">
+  <%= yield :header %>
   <content>
     <div class="span-4 colborder">
       <%= yield :sidebar %>
