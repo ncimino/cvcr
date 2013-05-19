@@ -1,5 +1,17 @@
-<% unless defined? classes %>
-    <li><%= link_to "#{page.name}".html_safe, page.url.empty? ? page : page.url %></li>
+<% if defined? classes %>
+
+    <% if current_page?(page) %>
+        <li class="active <%= classes %>"><%= link_to "#{page.name}".html_safe, page.url.empty? ? page : page.url %></li>
+    <% else %>
+        <li class="<%= classes %>"><%= link_to "#{page.name}".html_safe, page.url.empty? ? page : page.url %></li>
+    <% end %>
+
 <% else %>
-    <li class='#{classes}'><%= link_to "#{page.name}".html_safe, page.url.empty? ? page : page.url %></li>
+
+    <% if current_page?(page) %>
+        <li class="active"><%= link_to "#{page.name}".html_safe, page.url.empty? ? page : page.url %></li>
+    <% else %>
+        <li><%= link_to "#{page.name}".html_safe, page.url.empty? ? page : page.url %></li>
+    <% end %>
+
 <% end %>

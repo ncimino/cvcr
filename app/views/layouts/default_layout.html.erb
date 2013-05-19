@@ -5,9 +5,30 @@
   <%= yield :head %>
 </head>
 <body>
-<div class="container-fluid">
-  <%= yield :header %>
-  <content>
+<%= yield :header %>
+  <div class="container">
+
+    <div class="span-24 append-bottom">
+      <ul>
+        <% if user_signed_in? %>
+          <%= link_to '<li class="left hover">Account</li>'.html_safe, edit_user_registration_path %>
+          <%= link_to '<li class="right hover">Sign out</li>'.html_safe, destroy_user_session_path, :method => :delete %>
+          <li class="right last lighter"><%= current_user.email %></li>
+        <% else %>
+          <%= link_to '<li class="right hover">Sign in</li>'.html_safe, user_session_path %>
+          <%= link_to '<li class="right hover">Sign up</li>'.html_safe, new_user_registration_path %>
+        <% end %>
+      </ul>
+    </div>
+    <banner>
+      <%= link_to logo, root_path, {:class => "right prepend-1"} %>
+      <h1 class="left alt append-1"><%= yield(:title) %></h1>
+      <% flash.each do |key, value| %>
+        <div id="notice" class="left flash <%= key %>"><%= value %></div>
+      <% end %>
+    </banner>
+    <hr/>
+
     <div class="span-4 colborder">
       <%= yield :sidebar %>
       <%= yield :userbar %>
@@ -15,11 +36,18 @@
     <div class="span-18 last">
       <%= yield %>
     </div>
-  </content>
-  <footer>
+
     <%= yield :footer %>
-  </footer>
-  <%= debug(params) if Rails.env.development? %>
-</div>
+
+    <%= debug(params) if Rails.env.development? %>
+  </div>
+
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="/assets/bootstrap.js"></script>
+  <script src="/assets/bootstrap-responsive.css"></script>
+
 </body>
 </html>
