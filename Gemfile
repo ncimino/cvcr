@@ -37,10 +37,22 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem "mysql2"
-gem "rspec-rails", :group => "test, development"
-gem "cucumber-rails", :group => "test, development"
-gem "devise"
+gem 'frame'
 
-gem "meta_search", :group => "test"
-gem "activeadmin"
+gem 'mysql2'
+gem 'rspec-rails', :group => 'test, development'
+gem 'cucumber-rails', :group => 'test, development'
+gem 'devise'
+
+gem 'meta_search', :group => 'test'
+gem 'activeadmin'
+
+# was getting an error and added these to workaround the issue
+gem 'execjs'
+gem 'therubyracer'
+
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
