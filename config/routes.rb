@@ -1,28 +1,23 @@
 Cvcr::Application.routes.draw do
 
-  get 'registrations/edit'
-
-  get 'registrations/new'
-
-  get 'authentications/index'
-
-  get 'authentications/create'
-
-  get 'authentications/destroy'
-
-    match '/auth/failure' => 'authentications#failure'
-  match '/auth/:provider/callback' => 'authentications#create'
-  
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
-  devise_for :users, :controllers => {:registrations => 'registrations'}
-
   root :to => 'pages#show', :id => 0
 
-  get 'sessions/new'
-  #   resources :pages
+  match '/auth/failure' => 'authentications#failure'
+  match '/auth/:provider/callback' => 'authentications#create'
   match 'pages/:id' => 'pages#show', :as => :page
 
+  #resources :pages
+
+  get 'sessions/new'
+  get 'registrations/edit'
+  get 'registrations/new'
+  get 'authentications/index'
+  get 'authentications/create'
+  get 'authentications/destroy'
+
   ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, :controllers => {:registrations => 'registrations'}
 
 end
