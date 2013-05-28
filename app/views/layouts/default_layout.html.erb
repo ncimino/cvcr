@@ -10,18 +10,18 @@
 
     <div>
       <%= link_to logo, root_path, {:class => "right prepend-1"} %>
-      <h1 class="left alt append-1"><%= yield(:title) %></h1>
+      <h1><%= yield(:title) %></h1>
       <% flash.each do |key, value| %>
-        <div id="notice" class="left flash <%= key %>"><%= value %></div>
+        <div id="notice" class="<%= key %> <%= key %>-block"><%= value %></div>
       <% end %>
     </div>
     <hr/>
 
-    <div class="span-4 colborder">
+    <div>
       <%= yield :sidebar %>
       <%= yield :userbar %>
     </div>
-    <div class="span-18 last">
+    <div>
       <%= yield %>
     </div>
 
