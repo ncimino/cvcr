@@ -7,9 +7,12 @@ ActiveAdmin.register Page do
       f.input :ordinal
       f.input :url, :as => :url
       f.input :location, :as => :select, :collection => [['Top', 'topbar'], ['Userbar', 'userbar'], ['Sidebar', 'sidebar'], ['Bottom', 'bottombar'], ['Disabled', 'off']]
-      f.input :content, :as => :text
+      #f.input :content, :as => :text, :input_html => { :class => 'ckeditor' }
+      f.input :content, :as => :ckeditor
     end
     f.buttons
   end
+
+  #form :partial => "form"
 
 end

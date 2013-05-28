@@ -51,6 +51,8 @@ gem 'activeadmin'
 gem 'execjs'
 gem 'therubyracer'
 
+gem 'ckeditor'
+
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-facebook'

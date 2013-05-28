@@ -31,25 +31,22 @@
             <ul class="nav">
               <%= render :partial => "pages/links", :collection => @display_pages.topbar, :as => :page, :locals => {:classes => "left hover"} %>
             </ul>
-
-            <ul class="nav pull-right">
-              <% if user_signed_in? %>
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-header">Manage</li>
-                      <li><%= link_to 'Account', edit_user_registration_path %></li>
-                      <li class="divider"></li>
-                      <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
-                    </ul>
-                  </li>
-              <% else %>
-                  <li><%= link_to 'Sign in', user_session_path %></li>
-                  <li><%= link_to 'Sign up', new_user_registration_path %></li>
-              <% end %>
-            </ul>
-            <!--</div>-->
-
+            <!--<ul class="nav pull-right">-->
+              <!--<%# if user_signed_in? %>-->
+                  <!--<li class="dropdown">-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%#= current_user.email %> <b class="caret"></b></a>-->
+                    <!--<ul class="dropdown-menu">-->
+                      <!--<li class="nav-header">Manage</li>-->
+                      <!--<li><%#= link_to 'Account', edit_user_registration_path %></li>-->
+                      <!--<li class="divider"></li>-->
+                      <!--<li><%#= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>-->
+                    <!--</ul>-->
+                  <!--</li>-->
+              <!--<%# else %>-->
+                  <!--<li><%#= link_to 'Sign in', user_session_path %></li>-->
+                  <!--<li><%#= link_to 'Sign up', new_user_registration_path %></li>-->
+              <!--<%# end %>-->
+            <!--</ul>-->
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -68,9 +65,13 @@
 <% end %>
 
 <% content_for :footer do %>
-    <nav class="span-24 prepend-top last">
-      <ul>
-        <%= render :partial => "pages/links", :collection => @display_pages.bottombar, :as => :page, :locals => {:classes => "left hover"} %>
-      </ul>
-    </nav>
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul>
+            <%= render :partial => "pages/links", :collection => @display_pages.bottombar, :as => :page %>
+          </ul>
+        </div>
+      </div>
+    </div>
 <% end %>
