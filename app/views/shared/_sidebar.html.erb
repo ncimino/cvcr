@@ -1,9 +1,7 @@
 <% if !sidebar.empty? %>
-    <aside>
-      <nav class="box">
-        <ul>
-          <%= render :partial => "pages/links", :collection => sidebar, :as => :page %>
-        </ul>
-      </nav>
-    </aside>
+  <div class="span4 pull-right">
+    <ul class="nav nav-list">
+      <%= render :partial => "pages/links", :collection => sidebar, :as => :page %>
+    </ul>
+  </div>
 <% end %>

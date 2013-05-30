@@ -4,7 +4,7 @@ Cvcr::Application.routes.draw do
 
   match '/auth/failure' => 'authentications#failure'
   match '/auth/:provider/callback' => 'authentications#create'
-  match 'pages/:id' => 'pages#show', :as => :page
+  match ':id' => 'pages#show', :as => :page
 
   #resources :pages
 

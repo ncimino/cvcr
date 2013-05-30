@@ -1,77 +1,65 @@
 <% content_for :head do %>
-    <%= favicon_link_tag('/assets/favicon.ico') %>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tag %>
-    <style type="text/css">
-        body {
-            padding-top: 60px;
-        }
-        @media (max-width: 979px) {
-            body {
-                padding-top: 0px;
-            }
-        }
-    </style>
+  <%= favicon_link_tag('/assets/favicon.ico') %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tag %>
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+    @media (max-width: 979px) {
+      body {
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+    }
+  </style>
 <% end %>
 
 <% content_for :header do %>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="brand" href="#">Coffee Roasters</a>
-          <div class="nav-collapse collapse">
-            <ul class="nav">
-              <%= render :partial => "pages/links", :collection => @display_pages.topbar, :as => :page, :locals => {:classes => "left hover"} %>
-            </ul>
-            <!--<ul class="nav pull-right">-->
-              <!--<%# if user_signed_in? %>-->
-                  <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%#= current_user.email %> <b class="caret"></b></a>-->
-                    <!--<ul class="dropdown-menu">-->
-                      <!--<li class="nav-header">Manage</li>-->
-                      <!--<li><%#= link_to 'Account', edit_user_registration_path %></li>-->
-                      <!--<li class="divider"></li>-->
-                      <!--<li><%#= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>-->
-                    <!--</ul>-->
-                  <!--</li>-->
-              <!--<%# else %>-->
-                  <!--<li><%#= link_to 'Sign in', user_session_path %></li>-->
-                  <!--<li><%#= link_to 'Sign up', new_user_registration_path %></li>-->
-              <!--<%# end %>-->
-            <!--</ul>-->
-          </div><!--/.nav-collapse -->
-        </div>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="brand" href="/">Coffee Roasters</a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <%= render :partial => 'pages/links', :collection => @display_pages.topbar, :as => :page %>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
     </div>
+  </div>
 
 <% end %>
 
 <% content_for :sidebar do %>
-    <%= render 'shared/sidebar', :sidebar => @display_pages.sidebar %>
+  <%= render 'shared/sidebar', :sidebar => @display_pages.sidebar %>
 <% end %>
 
 <% content_for :userbar do %>
-    <% if user_signed_in? %>
-        <%= render 'shared/sidebar', :sidebar => @display_pages.userbar %>
-    <% end %>
+  <% if user_signed_in? %>
+    <%= render 'shared/sidebar', :sidebar => @display_pages.userbar %>
+  <% end %>
 <% end %>
 
 <% content_for :footer do %>
-    <div class="navbar navbar-inverse navbar-fixed-bottom">
-      <div class="navbar-inner">
-        <div class="container">
-          <ul>
-            <%= render :partial => "pages/links", :collection => @display_pages.bottombar, :as => :page %>
-          </ul>
-        </div>
+  <div class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav">
+          <%= render :partial => "pages/links", :collection => @display_pages.bottombar, :as => :page %>
+        </ul>
       </div>
     </div>
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <%= javascript_include_tag 'bootstrap' %>
 <% end %>

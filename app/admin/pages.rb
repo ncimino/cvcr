@@ -1,5 +1,13 @@
 ActiveAdmin.register Page do
 
+  index do
+    column :name
+    column :title
+    column :ordinal
+    column :location
+    default_actions
+  end
+
   form do |f|
     f.inputs "Page" do
       f.input :name
