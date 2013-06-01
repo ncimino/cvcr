@@ -5,25 +5,30 @@
   <%= yield :head %>
 </head>
 <body>
-<%= yield :header %>
 <div class="container">
+  <%= yield :header %>
   <div class="row">
-    <div>
-      <div class="pull-right span4">
-        <%= link_to logo, root_path %>
+    <% flash.each do |key, value| %>
+      <div id="notice" class="<%= key %> <%= key %>-block"><%= value %></div>
+    <% end %>
+    <% if !@display_pages.sidebar.length %>
+      <div class="span4" data-spy="affix" data-offset-top="60">
         <%= yield :sidebar %>
         <%= yield :userbar %>
       </div>
-      <h1><%= yield :title  %></h1>
-      <% flash.each do |key, value| %>
-        <div id="notice" class="<%= key %> <%= key %>-block"><%= value %></div>
-      <% end %>
+      <div class="span8">
+        <%= yield %>
+      </div>
+    <% else %>
+      <div class="span12">
+        <%= yield %>
+      </div>
+    <% end %>
+  <% if Rails.env.development? %>
+    <div class="span12">
+      <%= debug(params) %>
     </div>
-    <hr/>
-    <div>
-      <%= yield %>
-    </div>
-    <%= debug(params) if Rails.env.development? %>
+  <% end %>
   </div>
 </div>
 <%= yield :footer %>

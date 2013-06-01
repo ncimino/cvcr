@@ -12,5 +12,4 @@
 //
 // require_tree .
 //= require_self
-var CKEDITOR_BASEPATH = 'http://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/';
-// require bootstrap
+//= require custom

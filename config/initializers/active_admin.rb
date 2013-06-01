@@ -142,6 +142,7 @@ ActiveAdmin.setup do |config|
   #config.register_javascript 'ckeditor/ckeditor.js'
   #config.register_javascript 'ckeditor/init.js'
   config.register_javascript '//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.0.1/ckeditor.js'
+  #config.register_javascript 'wysiwyg'
 
   # == CSV options
   #

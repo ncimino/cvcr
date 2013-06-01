@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require bootstrap
- *= require bootstrap-responsive
  */
+@import "bootstrap.css.scss";
+@import "bootstrap-responsive.css.scss";
+@import "custom.css.scss";

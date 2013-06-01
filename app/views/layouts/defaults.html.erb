@@ -4,40 +4,32 @@
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
-  <style type="text/css">
-    body {
-      padding-top: 60px;
-      padding-bottom: 60px;
-    }
-    @media (max-width: 979px) {
-      body {
-        padding-top: 0px;
-        padding-bottom: 0px;
-      }
-    }
-  </style>
 <% end %>
 
 <% content_for :header do %>
-
-  <div class="navbar navbar-inverse navbar-fixed-top">
+  <header class="jumbotron">
+    <div class="container">
+      <h1><%= yield :title  %></h1>
+      <p class="lead">Our coffee rocks!</p>
+      <%#= link_to logo, root_path, :class => 'pull-right' %>
+    </div>
+  </header>
+  <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="brand" href="/">Coffee Roasters</a>
-        <div class="nav-collapse collapse">
-          <ul class="nav">
-            <%= render :partial => 'pages/links', :collection => @display_pages.topbar, :as => :page %>
-          </ul>
-        </div><!--/.nav-collapse -->
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <%= render :partial => 'pages/links', :collection => @display_pages.topbar, :as => :page %>
+        </ul>
+      </div><!--/.nav-collapse -->
       </div>
     </div>
   </div>
-
 <% end %>
 
 <% content_for :sidebar do %>
@@ -51,15 +43,26 @@
 <% end %>
 
 <% content_for :footer do %>
-  <div class="navbar navbar-inverse navbar-fixed-bottom">
-    <div class="navbar-inner">
+  <footer class="footer">
       <div class="container">
-        <ul class="nav">
-          <%= render :partial => "pages/links", :collection => @display_pages.bottombar, :as => :page %>
-        </ul>
+        <div class="span2 offset2">
+          <ul class="nav">
+            <%= render :partial => "pages/links", :collection => @display_pages.bottombar.each_with_index.map { |x, idx| x if idx % 3 == 0 }.compact, :as => :page %>
+          </ul>
+        </div>
+        <div class="span2 offset1">
+          <ul class="nav">
+            <%= render :partial => "pages/links", :collection => @display_pages.bottombar.each_with_index.map { |x, idx| x if idx % 3 == 1 }.compact, :as => :page %>
+          </ul>
+        </div>
+        <div class="span2 offset1">
+          <ul class="nav">
+            <%= render :partial => "pages/links", :collection => @display_pages.bottombar.each_with_index.map { |x, idx| x if idx % 3 == 2 }.compact, :as => :page %>
+          </ul>
+        </div>
       </div>
-    </div>
-  </div>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  </footer>
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>-->
+  <%= javascript_include_tag 'jquery' %>
   <%= javascript_include_tag 'bootstrap' %>
 <% end %>
