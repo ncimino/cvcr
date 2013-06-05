@@ -12,6 +12,6 @@ module ApplicationHelper
   end
 
   def logo
-    image_tag("cvcr.jpeg", {:alt => "Carbon Valley Coffee Roasters Logo", :class => "img-circle", :style => "width: 250px; height: 250px"})
+    image_tag("cvcr.png", {:alt => "Carbon Valley Coffee Roasters Logo", :class => "img-circle", :style => "width: 250px; height: 250px"})
   end
 end

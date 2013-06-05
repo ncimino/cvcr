@@ -5,30 +5,21 @@
   <%= yield :head %>
 </head>
 <body>
+<div class="beans-bg"></div>
 <div class="container">
   <%= yield :header %>
   <div class="row">
     <% flash.each do |key, value| %>
       <div id="notice" class="<%= key %> <%= key %>-block"><%= value %></div>
     <% end %>
-    <% if !@display_pages.sidebar.length %>
-      <div class="span4" data-spy="affix" data-offset-top="60">
-        <%= yield :sidebar %>
-        <%= yield :userbar %>
-      </div>
-      <div class="span8">
-        <%= yield %>
-      </div>
-    <% else %>
+    <div class="span12">
+      <%= yield %>
+    </div>
+    <% if Rails.env.development? %>
       <div class="span12">
-        <%= yield %>
+        <%= debug(params) %>
       </div>
     <% end %>
-  <% if Rails.env.development? %>
-    <div class="span12">
-      <%= debug(params) %>
-    </div>
-  <% end %>
   </div>
 </div>
 <%= yield :footer %>

@@ -1,76 +1,39 @@
 body {
-  padding-top: 41px;
+  margin: 0;
+  //background-color: saddlebrown;
+  background-color: #463428;
+}
+
+body > div.container {
+  //border: 1px solid #463428;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.beans-bg {
+  height: 250px;
+  width: 100%;
+  min-width: 940px;
+  background-image: image-url("beans_tall.png");
+  background-repeat: repeat-x;
+  background-position-x: center;
+  //border-bottom: solid #463428 3px;
+  border-bottom: solid saddlebrown 3px;
+  position: absolute;
+  z-index: -10000;
+}
+
+p.lead {
+  background-color: sandybrown;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
 }
 
 //@media (min-width: 1200px) { ... }
 //@media (min-width: 768px) and (max-width: 979px) { ... }
 //@media (max-width: 767px) { ... }
 //@media (max-width: 480px) { ... }
-
-@media (max-width: 767px) {
-  body {
-    padding-top: 0px;
-  }
-  header.jumbotron {
-    background-image:image-url('cvcr.jpeg');
-    background-repeat:no-repeat;
-    padding: 40px 0;
-  }
-  header.jumbotron h1 {
-    font-size: 60px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    color: #000000;
-  }
-
-  header.jumbotron .lead {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 24px;
-    font-weight: 300;
-    color: #000000;
-  }
-}
-
-header.jumbotron {
-  height: 220px;
-  background-image:image-url('beans_brown_banner.jpg');
-  background-repeat:no-repeat;
-  background-size: 100%;
-  padding: 40px 0;
-}
-header.jumbotron h1 {
-  font-size: 60px;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  //height: 60px;
-  letter-spacing: -1px;
-  //line-height: 60px;
-  //margin-bottom: 10px;
-  //margin-left: 10px;
-  //margin-right: 340px;
-  //margin-top: 10px;
-  //text-align: left;
-  text-rendering: optimizelegibility;
-  text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 3px, rgba(0, 0, 0, 0.0745098) 0px 0px 30px;
-  color: #ffffff;
-  margin: 0 60px;
-}
-
-header.jumbotron .lead {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 24px;
-  font-weight: 300;
-  //height: 30px;
-  //line-height: 30px;
-  //margin-bottom: 20px;
-  //margin-left: 20px;
-  //margin-right: 340px;
-  //margin-top: 0px;
-  //text-align: left;
-  text-shadow: rgba(0, 0, 0, 0.4) 0px 1px 3px, rgba(0, 0, 0, 0.0745098) 0px 0px 30px;
-  color: #ffffff;
-  margin: 0 60px;
-}
 
 footer {
   //border-top: gray solid 1px;
@@ -80,4 +43,32 @@ footer {
   margin-top: 70px;
   border-top: 1px solid #e5e5e5;
   background-color: #f5f5f5;
+}
+
+.navbar-inner ul.nav {
+  padding: 105px 0;
+}
+
+.hidden-menu-inner {
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  height: 175px;
+  //background-image: image-url("beans_blurred.png");
+  background-color: rgba(0,0,0,0.80);
+  border: solid 1px saddlebrown;
+  box-shadow: 5px 5px 5px #000;
+}
+
+.hidden-menu {
+  display: none;
+  position: absolute;
+  top: 145px;
+  //background-color: sandybrown;
+  //padding: 2px;
+  //-moz-border-radius: 10px;
+  //border-radius: 10px;
+}
+
+.nav li {
+  margin: 0 30px;
 }
