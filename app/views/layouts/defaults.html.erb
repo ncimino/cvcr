@@ -12,12 +12,23 @@
       <div class="container">
         <div class="row">
           <div class="span4">
-            <ul class="text-center nav text-left">
-              <%= render :partial => 'pages/links',
-                         :collection => @display_pages.topbar, :as => :page,
-                         :locals => { :classes => 'text-center' }
-              %>
-            </ul>
+            <!--<div class="span2 main-nav-bar">-->
+            <!--<a href="#" class="nav btn btn-inverse">HOME</a>-->
+            <!--</div>-->
+            <div class="dropdown span2 main-nav-bar">
+              <a class="dropdown-toggle nav btn btn-inverse" data-toggle="dropdown"
+                 href="#">HOME</a>
+              <ul class="dropdown-menu" role="menu"
+                  aria-labelledby="dLabel">
+                <li><a href="#">Test Item</a></li>
+                <li><a href="#">Test Item 2</a></li>
+              </ul>
+            </div>
+
+            <div class="span2 main-nav-bar">
+            <a href="#" class="nav btn btn-inverse">ABOUT</a>
+            </div>
+
           </div>
           <div class="text-center span4">
             <%= link_to logo, root_path, :class => 'text-center' %>
@@ -26,13 +37,6 @@
             <ul class="text-center nav text-left">
 
             </ul>
-          </div>
-        </div>
-        <div class="container hidden-menu">
-          <div class="row">
-            <div class="hidden-menu-inner span12">
-
-            </div>
           </div>
         </div>
       </div>

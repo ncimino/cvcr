@@ -1,26 +1,51 @@
 body {
   margin: 0;
   //background-color: saddlebrown;
-  background-color: #463428;
+  //background-color: #463428;
+  //background-color: #453424;
+  background-color: #000;
+  background-image: image-url("beans_black_tileable.png");
+  background-position-x: center;
+  color: white;
+  min-width: 940px;
 }
 
-body > div.container {
-  //border: 1px solid #463428;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-}
-
-.beans-bg {
+.header-bg {
   height: 250px;
   width: 100%;
   min-width: 940px;
-  background-image: image-url("beans_tall.png");
-  background-repeat: repeat-x;
-  background-position-x: center;
-  //border-bottom: solid #463428 3px;
-  border-bottom: solid saddlebrown 3px;
+  background-color: rgba(255,255,255,0.05);
   position: absolute;
   z-index: -10000;
+  //border-bottom: solid rgba(244,164,96,0.3) 5px;
+  -webkit-border-image: image-url("border.png") 30 30 round; /* Safari 5 */
+  -o-border-image: image-url("border.png") 30 30 round; /* Opera */
+  border-image: image-url("border.png") 30 30 round;
+  border-width:0 0 2px;
+}
+
+.dropdown-menu:after {
+  position: absolute;
+  top: -6px;
+  left: 60px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  border-left: 6px solid transparent;
+  content: '';
+}
+
+.main-nav-bar > .dropdown-menu {
+  width: 100%;
+}
+
+.dropdown-toggle.nav {
+  margin-bottom: 0;
+}
+
+.main-nav-bar {
+  margin: 115px 0;
+  text-align: center;
 }
 
 p.lead {
@@ -50,19 +75,24 @@ footer {
 }
 
 .hidden-menu-inner {
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+  //-moz-border-radius: 5px;
+  //border-radius: 5px;
   height: 175px;
   //background-image: image-url("beans_blurred.png");
-  background-color: rgba(0,0,0,0.80);
-  border: solid 1px saddlebrown;
-  box-shadow: 5px 5px 5px #000;
+  background-color: rgba(0,0,0,0.90);
+  //border: solid 1px saddlebrown;
+  -webkit-border-image: image-url("border.png") 20 20 round; /* Safari 5 */
+  -o-border-image: image-url("border.png") 20 20 round; /* Opera */
+  border-image: image-url("border.png") 20 20 round;
+  //box-shadow: 5px 5px 5px rgba(255,255,255,0.10);
+  border-width: 2px 0;
 }
 
 .hidden-menu {
   display: none;
   position: absolute;
   top: 145px;
+  width: 100%;
   //background-color: sandybrown;
   //padding: 2px;
   //-moz-border-radius: 10px;
@@ -71,4 +101,10 @@ footer {
 
 .nav li {
   margin: 0 30px;
+}
+
+a.nav {
+  font-weight: bold;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
 }
