@@ -6,17 +6,20 @@
 </head>
 <body>
 <div class="header-bg"></div>
-<div class="hidden-menu">
-  <div class="hidden-menu-inner">
-  </div>
-</div>
 <div class="container">
+  <div class="text-center logo-holder">
+    <%= link_to logo, root_path, :class => 'text-center' %>
+  </div>
   <%= yield :header %>
   <div class="row">
     <% flash.each do |key, value| %>
       <div id="notice" class="<%= key %> <%= key %>-block"><%= value %></div>
     <% end %>
     <div class="span12">
+      <h1><%= yield :title  %></h1>
+      <p class="lead">Our coffee rocks!</p>
+    </div>
+    <div class="span12 content">
       <%= yield %>
     </div>
     <% if Rails.env.development? %>
