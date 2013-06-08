@@ -35,8 +35,3 @@
 ////    return $(selector).data('hover')?true:false; //check element for hover property
 ////  }
 ////});
-
-$('.dropdown-toggle').live( 'mouseenter', function() {
-  //alert('hello');
-  $(this).dropdown();
-});

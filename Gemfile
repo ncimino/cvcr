@@ -59,4 +59,6 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 
+gem 'mini_magick'
 gem 'carrierwave'
+gem 'carrierwave-meta'

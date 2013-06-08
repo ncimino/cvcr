@@ -1,54 +1,49 @@
-h1, h2, h3, h4, h5 {
-  //font-family: "klavika-web", "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif !important;
-  //font-family: 'Marmelad', sans-serif;
-  font-family: 'Stint Ultra Condensed', Arial, serif; font-weight: 400;
-  text-rendering: optimizelegibility;
-}
+//#463428=rgb(70,52,40), saddlebrown=rgb(139,69,19), #867468=rgb(134,116,104), sandybrown=rgb(244,164,96)
+//@media (min-width: 1200px) { ... }
+//@media (min-width: 768px) and (max-width: 979px) { ... }
+//@media (max-width: 767px) { ... }
+//@media (max-width: 480px) { ... }
 
+@import url(http://fonts.googleapis.com/css?family=Stint+Ultra+Condensed);
 
 body {
+  font-family: Verdana, Geneva, sans-serif;
   margin: 0;
-  //background-color: saddlebrown;
-  //background-color: #463428;
-  //background-color: #453424;
   background-color: #000;
   background-image: image-url("beans_black_tileable.png");
   background-position-x: center;
+  background-attachment: fixed;
   color: white;
   min-width: 940px;
 }
 
-p > img {
-
-  /* This centers the image */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-  /* This adds the border */
-  padding:8px;
-  border:solid;
-  border-color: #ddd #fff #fff #ddd;
-  border-width: 1px 2px 2px 1px;
-  background-color: #453424;
+h1, h2, h3, h4, h5 {
+  font-family: 'Stint Ultra Condensed', Arial, serif;
+  font-weight: 500;
+  text-rendering: optimizelegibility;
+  color: rgb(134,116,104);
 }
 
 .header-bg {
-  height: 197px;
+  height: 199px;
   width: 100%;
   min-width: 940px;
   background-color: rgb(255,255,255);
   background-color: rgba(255,255,255,0.05);
   position: absolute;
   z-index: -10000;
-  //border-bottom: solid rgba(244,164,96,0.3) 5px;
+  border-bottom: solid rgba(244,164,96,0.3) 5px;
   -webkit-border-image: image-url("border.png") 30 30 round; /* Safari 5 */
   -o-border-image: image-url("border.png") 30 30 round; /* Opera */
   border-image: image-url("border.png") 30 30 round;
-  border-width:0 0 3px;
+  border-width:0 0 1px;
 }
 
-div.dropdown:hover > div.dropdown-menu {
+div.dropdown-menu:hover {
+  display: block;
+}
+
+div.dropdown > a:hover + div.dropdown-menu {
   display: block;
 }
 
@@ -74,14 +69,13 @@ div.main-nav-bar ul.nav li:not(.disabled) a {
 }
 
 div.main-nav-bar ul.nav > li {
-  //width: 210px;
   margin: 0 10px;
 }
 
 .main-nav-bar > div.dropdown-menu {
-  width: 100%;
-  top: 110px;
-  position: fixed;
+  //width: 100%;
+  top: -5px;
+  position: relative;
   -moz-border-radius: 0;
   border-radius: 0;
   -webkit-border-image: image-url("border.png") 30 30 round; /* Safari 5 */
@@ -92,8 +86,20 @@ div.main-nav-bar ul.nav > li {
   background-color: rgba(0,0,0,0.95);
 }
 
+.revert2 { left: -140px; }
+.revert4 { left: -260px; }
+.revert6 { left: -380px; }
+.revert8 { left: -520px; }
+.revert10 { left: -640px; }
+.revert12 { left: -780px; }
+
 .dropdown-toggle.nav {
   margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.top-nav-inner {
+  height: 200px;
 }
 
 .main-nav-bar {
@@ -101,18 +107,37 @@ div.main-nav-bar ul.nav > li {
   text-align: center;
 }
 
-div.row > div.span12 {
-  background-color: rgb(0, 0, 0);
-  //background-color: rgba(245, 109, 47, 0.23);
-  background-color: rgba(255, 255, 255, 0.23);
+.content-holder {
+  background-image: image-url('content_bg.png');
   -moz-border-radius: 10px 0;
   border-radius: 10px 10px 0 0;
-  -webkit-box-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  -webkit-box-shadow: 0 0 3px rgba(244,164,96,0.5);
+  box-shadow: 0 0 5px rgba(244,164,96,0.5);
   border-right: 1px solid rgba(2, 2, 2, 0.28);
   border-left: 1px solid rgba(2, 2, 2, 0.28);
-  border-top: 1px solid rgba(245, 109, 47, 0.27);
-  //padding: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.27);
+  padding: 10px;
+}
+
+.content-holder img {
+  background-image: image-url('content_bg.png');
+  -moz-border-radius: 5px 0;
+  border-radius: 5px 5px 0 0;
+  -webkit-box-shadow: 0 0 3px rgba(134,116,104,1);
+  box-shadow: 0 0 5px rgba(244,164,96,0.3);
+  box-shadow: 0 0 5px rgb(134,116,104);
+  box-shadow: 0 0 5px rgb(255,255,255);
+  border-right: 1px solid rgba(2, 2, 2, 0.28);
+  border-left: 1px solid rgba(2, 2, 2, 0.28);
+  border-right: 1px solid rgba(255, 255, 255, 0.27);
+  border-left: 1px solid rgba(255, 255, 255, 0.27);
+  border-top: 1px solid black;
+  padding: 0px;
+}
+
+.content-holder > hr {
+  border-top: 1px solid rgb(70,52,40);
+  border-bottom: 1px solid rgb(134,116,104);
 }
 
 .logo-holder {
@@ -125,17 +150,7 @@ div.row > div.span12 {
   margin-bottom: 20px;
 }
 
-
-//background-color: sandybrown;
-
-//@media (min-width: 1200px) { ... }
-//@media (min-width: 768px) and (max-width: 979px) { ... }
-//@media (max-width: 767px) { ... }
-//@media (max-width: 480px) { ... }
-
 footer {
-  //border-top: gray solid 1px;
-  //background-color: lightgray;
   text-align: center;
   padding: 30px 0;
   margin-top: 70px;
@@ -144,7 +159,20 @@ footer {
   -webkit-border-image: image-url("border.png") 30 30 round; /* Safari 5 */
   -o-border-image: image-url("border.png") 30 30 round; /* Opera */
   border-image: image-url("border.png") 30 30 round;
-  border-width: 3px 0 0 0;
+  border-width: 1px 0 0 0;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.75);
+}
+
+footer a {
+  color: rgb(134,116,104);
+}
+
+footer a:hover {
+  color: rgb(70,52,40);
+}
+
+.img-menu:hover {
+  opacity:0.4;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
 }
