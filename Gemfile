@@ -58,3 +58,5 @@ gem 'omniauth-github'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
+
+gem 'carrierwave'
