@@ -188,6 +188,7 @@
     <div class="container">
       <div class="span2 offset2">
         <ul class="nav">
+          <%= image_tag('facebook-48.png') %>
           <%= render :partial => "pages/links", :collection => @display_pages.bottombar.each_with_index.map { |x, idx| x if idx % 3 == 0 }.compact, :as => :page %>
         </ul>
       </div>
