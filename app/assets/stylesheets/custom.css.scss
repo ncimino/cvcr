@@ -24,12 +24,26 @@ h1, h2, h3, h4, h5 {
   color: rgb(134,116,104);
 }
 
+$edge: rgba(50,50,50,0.5);
+$mid: rgba(0,0,0,0.5);
+
 .header-bg {
   height: 199px;
   width: 100%;
   min-width: 940px;
-  background-color: rgb(255,255,255);
-  background-color: rgba(255,255,255,0.05);
+  background-image: linear-gradient(bottom, $edge 0%, $mid 50%, $edge 100%);
+  background-image: -o-linear-gradient(bottom, $edge 0%,  50%, $edge 100%);
+  background-image: -moz-linear-gradient(bottom, $edge 0%, $mid 50%, $edge 100%);
+  background-image: -webkit-linear-gradient(bottom, $edge 0%, $mid 50%, $edge 100%);
+  background-image: -ms-linear-gradient(bottom, $edge 0%, $mid 50%, $edge 100%);
+  background-image: -webkit-gradient(
+      linear,
+      left bottom,
+      left top,
+      color-stop(0, $edge),
+      color-stop(0.5, $mid),
+      color-stop(1, $edge)
+  );
   position: absolute;
   z-index: -10000;
   border-bottom: solid rgba(244,164,96,0.3) 5px;
@@ -65,7 +79,7 @@ div.main-nav-bar ul.nav {
 }
 
 div.main-nav-bar ul.nav li:not(.disabled) a {
-  color: saddlebrown;
+  color: rgb(134,116,104);
 }
 
 div.main-nav-bar ul.nav > li {
@@ -73,7 +87,6 @@ div.main-nav-bar ul.nav > li {
 }
 
 .main-nav-bar > div.dropdown-menu {
-  //width: 100%;
   top: -5px;
   position: relative;
   -moz-border-radius: 0;
@@ -84,6 +97,7 @@ div.main-nav-bar ul.nav > li {
   border-width: 1px 0;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.95);
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.95);
 }
 
 .revert2 { left: -140px; }
@@ -96,6 +110,9 @@ div.main-nav-bar ul.nav > li {
 .dropdown-toggle.nav {
   margin-bottom: 0;
   text-transform: uppercase;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-decoration: none;
 }
 
 .top-nav-inner {
@@ -113,9 +130,11 @@ div.main-nav-bar ul.nav > li {
   border-radius: 10px 10px 0 0;
   -webkit-box-shadow: 0 0 3px rgba(244,164,96,0.5);
   box-shadow: 0 0 5px rgba(244,164,96,0.5);
+  border: 1px solid rgb(255, 255, 255);
   border-right: 1px solid rgba(2, 2, 2, 0.28);
   border-left: 1px solid rgba(2, 2, 2, 0.28);
   border-top: 1px solid rgba(255, 255, 255, 0.27);
+  border-bottom: 0;
   padding: 10px;
 }
 
@@ -137,7 +156,7 @@ div.main-nav-bar ul.nav > li {
 
 .content-holder > hr {
   border-top: 1px solid rgb(70,52,40);
-  border-bottom: 1px solid rgb(134,116,104);
+  border-bottom: 0px solid rgb(134,116,104);
 }
 
 .logo-holder {
@@ -152,8 +171,8 @@ div.main-nav-bar ul.nav > li {
 
 footer {
   text-align: center;
-  padding: 30px 0;
-  margin-top: 70px;
+  padding: 30px 0 60px 0;
+  margin-top: 40px;
   border-top: 1px solid #e5e5e5;
   background-color: #f5f5f5;
   -webkit-border-image: image-url("border.png") 30 30 round; /* Safari 5 */

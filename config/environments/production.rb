@@ -1,6 +1,6 @@
 Cvcr::Application.configure do
   
-  config.action_mailer.default_url_options = { :host => "econtriver.com" }
+  config.action_mailer.default_url_options = { :host => "carbonvalleycoffeeroasters.com" }
   config.action_mailer.smtp_settings = { :openssl_verify_mode  => 'none' }
   # Settings specified here will take precedence over those in config/application.rb
 
