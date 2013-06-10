@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <title><%= yield :title %></title>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
   <%= yield :head %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <% flash.each do |key, value| %>
@@ -14,10 +18,12 @@
     <%= link_to logo, root_path, :class => 'text-center' %>
   </div>
   <%= yield :header %>
-  <div class="container content-holder">
+  <div class="container">
+    <div class="content-holder">
     <h1><%= yield :title  %></h1>
     <hr />
     <%= yield %>
+    </div>
   </div>
   <% if Rails.env.development? %>
     <div class="container content-holder">

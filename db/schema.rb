@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130608175313) do
+ActiveRecord::Schema.define(:version => 20130609205750) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -58,9 +58,29 @@ ActiveRecord::Schema.define(:version => 20130608175313) do
     t.string   "title"
     t.string   "alt"
     t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
+    t.string   "button_text"
+    t.string   "button_url"
+    t.string   "link"
   end
+
+  create_table "image_handlers_pages", :id => false, :force => true do |t|
+    t.integer "page_id"
+    t.integer "image_handler_id"
+  end
+
+  add_index "image_handlers_pages", ["image_handler_id", "page_id"], :name => "index_image_handlers_pages_on_image_handler_id_and_page_id", :unique => true
+  add_index "image_handlers_pages", ["page_id"], :name => "index_image_handlers_pages_on_page_id"
+
+  create_table "image_handlers_parts", :id => false, :force => true do |t|
+    t.integer "part_id"
+    t.integer "image_handler_id"
+  end
+
+  add_index "image_handlers_parts", ["image_handler_id", "part_id"], :name => "index_image_handlers_parts_on_image_handler_id_and_part_id"
+  add_index "image_handlers_parts", ["part_id"], :name => "index_image_handlers_parts_on_part_id"
 
   create_table "pages", :force => true do |t|
     t.string   "name"

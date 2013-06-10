@@ -145,7 +145,7 @@
   <div id="myCarousel" class="carousel slide">
     <div class="carousel-inner">
       <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="0"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
@@ -190,47 +190,44 @@
   <footer class="footer">
     <div class="container">
       <div class="row">
-      <div class="span2">
-        <ul class="nav">
-          <%= render :partial => "pages/links", :collection => @display_pages
-              .bottombar.each_with_index.map { |x, idx| x if idx % 3 == 0 }
-              .compact, :as => :page %>
-        </ul>
-      </div>
-      <div class="span2 offset1">
-        <ul class="nav">
-          <%= render :partial => "pages/links", :collection => @display_pages
-              .bottombar.each_with_index.map { |x, idx| x if idx % 3 == 1 }
-              .compact, :as => :page %>
-        </ul>
-      </div>
-      <div class="span2 offset1">
-        <ul class="nav">
-          <%= render :partial => "pages/links", :collection => @display_pages
-              .bottombar.each_with_index.map { |x, idx| x if idx % 3 == 2 }
-              .compact, :as => :page %>
-        </ul>
-      </div>
-      <div class="span3 offset1 follow-footer">
-        <h2>Follow Us</h2>
-        <a href="https://www.facebook
+        <div class="span2">
+          <ul class="nav">
+            <%= render :partial => "pages/links", :collection => @display_pages.bottombar.each_with_index.map { |x, idx| x if idx % 3 == 0 }.compact, :as => :page %>
+          </ul>
+        </div>
+        <div class="span2 offset1">
+          <ul class="nav">
+            <%= render :partial => "pages/links", :collection => @display_pages.bottombar.each_with_index.map { |x, idx| x if idx % 3 == 1 }.compact, :as => :page %>
+          </ul>
+        </div>
+        <div class="span2 offset1">
+          <ul class="nav">
+            <%= render :partial => "pages/links", :collection => @display_pages.bottombar.each_with_index.map { |x, idx| x if idx % 3 == 2 }.compact, :as => :page %>
+          </ul>
+        </div>
+        <div class="span3 offset1 follow-footer">
+          <h2>Follow Us</h2>
+          <a href="https://www.facebook
         .com/pages/Carbon-Valley-Coffee-Roasters/412779672151088"><%=
-            image_tag('facebook-48.png', :class => 'img-menu img-circle')
-        %></a>
-        <a href="https://plus.google.com/u/0/107131835154629906866/about"><%=
-            image_tag('googleplus-48.png', :class => 'img-menu img-circle')
-        %></a>
-        <!-- facebook -->
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=511569865564832";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        <div class="pull-right fb-like" data-colorscheme="dark" data-font="verdana" data-layout="button_count" data-send="false" data-show-faces="false" data-width="450">&nbsp;</div>
+              image_tag('facebook-48.png', :class => 'img-menu img-circle')
+          %></a>
+          <a href="https://plus.google.com/u/0/107131835154629906866/about"><%=
+              image_tag('googleplus-48.png', :class => 'img-menu img-circle')
+          %></a>
+          <!-- facebook -->
+          <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=511569865564832";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));</script>
+          <div class="pull-right fb-like" data-colorscheme="dark" data-font="verdana" data-layout="button_count" data-send="false" data-show-faces="false" data-width="450">&nbsp;</div>
+        </div>
       </div>
-    </div>
+      <div class="row">
+        &copy; 2013 Carbon Valley Coffee Roasters, LLC. All rights reserved.
+      </div>
     </div>
   </footer>
   <script>
