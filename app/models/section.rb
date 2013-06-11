@@ -3,4 +3,8 @@ class Section < ActiveRecord::Base
   attr_accessible :title, :link, :location, :ordinal
 
   scope :bottom, where(:location => "bottom")
+  scope :products, where(:location => "products")
+  scope :drinks, where(:location => "drinks")
+  scope :contact, where(:location => "contact")
+  scope :events, where(:location => "events")
 end

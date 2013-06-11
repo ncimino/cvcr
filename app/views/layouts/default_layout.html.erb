@@ -20,8 +20,10 @@
   <%= yield :header %>
   <div class="container">
     <div class="content-holder">
-    <h1><%= yield :title  %></h1>
-    <hr />
+    <% if content_for?(:title) %>
+      <h1><%= yield :title  %></h1>
+      <hr />
+    <% end %>
     <%= yield %>
     </div>
   </div>

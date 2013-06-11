@@ -1,0 +1,10 @@
+<ul class="nav nav-pills nav-stacked">
+  <% if section.link.nil? %>
+    <li class="disabled"><a href="#"><%= section.title %></a></li>
+  <% else %>
+    <li class="disabled"><a href="<%= section.link %>"><%= section.title%></a></li>
+  <% end %>
+  <%= render :partial => "pages/links",
+             :collection => section.pages,
+             :as => :page %>
+</ul>
