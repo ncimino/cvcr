@@ -20,7 +20,7 @@ ActiveAdmin.register ImageHandler, :as => "Image" do
       f.input :image, :as => :file, :label => "Image Upload"
       f.input :remote_image_url, :label => "or a Image URL (web address)"
     end
-    f.buttons
+    f.actions
   end
 
   show do

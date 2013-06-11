@@ -1,9 +1,10 @@
 class Page < ActiveRecord::Base
   has_and_belongs_to_many :image_handlers
+  has_and_belongs_to_many :sections
 
   #after_update :save_images
   attr_accessible :content, :location, :name, :ordinal, :title, :url,
-                  :image_handler_ids
+                  :image_handler_ids, :section_ids
   validates_presence_of :name, :location
 
   scope :topbar, where(:location => "topbar")
@@ -12,6 +13,7 @@ class Page < ActiveRecord::Base
   #scope :link3, where(:location => "topbar")
   #scope :link4, where(:location => "topbar")
   scope :bottombar, where(:location => "bottombar")
+
 
   def to_param
     "#{id}-#{name.parameterize}"

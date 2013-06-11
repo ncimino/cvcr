@@ -6,6 +6,49 @@
   <%= csrf_meta_tag %>
 <% end %>
 
+<% content_for :carousel do %>
+  <% unless @page.image_handlers.empty? %>
+    <div id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        <% @page.image_handlers.size.times do | iter |%>
+          <li data-target="#myCarousel" data-slide-to="<%= iter %>"></li>
+        <% end %>
+      </ol>
+      <div class="carousel-inner">
+        <% @page.image_handlers.each do | img |%>
+          <div class="item <%= "active" if defined? first %>">
+            <% first="done" %>
+            <img src="<%=	img.image.url.to_s %>" alt="<%=	img.alt.to_s %>">
+            <div class="container">
+              <div class="carousel-caption">
+                <% unless img.title.blank? %>
+                  <h1><%=	img.title.to_s %></h1>
+                <% end %>
+                <% unless img.description.blank? %>
+                  <p class="lead"><%=	img.description.to_s %></p>
+                <% end %>
+                <% unless img.button_text.blank? %>
+                  <% if img.button_url.blank? %>
+                    <a class="btn btn-large btn-primary" href="#">
+                      <%= img.button_text.to_s %>
+                    </a>
+                  <% else %>
+                    <a class="btn btn-large btn-primary" href="<%= img.button_url.to_s %>">
+                      <%= img.button_text.to_s %>
+                    </a>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+    </div>
+  <% end %>
+<% end %>
+
 <% content_for :header do %>
   <div class="top-nav">
     <div class="top-nav-inner">
@@ -142,47 +185,7 @@
     </div>
   </div>
 
-  <div id="myCarousel" class="carousel slide">
-    <div class="carousel-inner">
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol>
-      <div class="item">
-        <img src="https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-prn1/531538_421549184607470_1731052876_n.jpg" alt="">
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Example headline.</h1>
-            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <a class="btn btn-large btn-primary" href="#">Sign up today</a>
-          </div>
-        </div>
-      </div>
-      <div class="item">
-        <%= image_tag('espresso_machine.jpg') %>
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <a class="btn btn-large btn-primary" href="#">Learn more</a>
-          </div>
-        </div>
-      </div>
-      <div class="item active">
-        <%= image_tag('beans_cooling.jpg') %>
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>One more for good measure.</h1>
-            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            <a class="btn btn-large btn-primary" href="#">Browse gallery</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
-  </div>
+  <%=	yield :carousel %>
 
 <% end %>
 
@@ -192,17 +195,32 @@
       <div class="row">
         <div class="span2">
           <ul class="nav">
-            <%= render :partial => "pages/links", :collection => @display_pages.bottombar.each_with_index.map { |x, idx| x if idx % 3 == 0 }.compact, :as => :page %>
+            <% if @display_bottom_pages %>
+            <%= render :partial => "pages/links",
+                       :collection => @display_bottom_pages.each_with_index.map {
+                               |x,idx| x if idx % 3 == 0 }.compact,
+                       :as => :page %>
+            <% end %>
           </ul>
         </div>
         <div class="span2 offset1">
           <ul class="nav">
-            <%= render :partial => "pages/links", :collection => @display_pages.bottombar.each_with_index.map { |x, idx| x if idx % 3 == 1 }.compact, :as => :page %>
+            <% if @display_bottom_pages %>
+              <%= render :partial => "pages/links",
+                         :collection => @display_bottom_pages.each_with_index.map {
+                                 |x,idx| x if idx % 3 == 1 }.compact,
+                         :as => :page %>
+            <% end %>
           </ul>
         </div>
         <div class="span2 offset1">
           <ul class="nav">
-            <%= render :partial => "pages/links", :collection => @display_pages.bottombar.each_with_index.map { |x, idx| x if idx % 3 == 2 }.compact, :as => :page %>
+            <% if @display_bottom_pages %>
+              <%= render :partial => "pages/links",
+                         :collection => @display_bottom_pages.each_with_index.map {
+                                 |x,idx| x if idx % 3 == 2 }.compact,
+                         :as => :page %>
+            <% end %>
           </ul>
         </div>
         <div class="span3 offset1 follow-footer">

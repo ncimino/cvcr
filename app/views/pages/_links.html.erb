@@ -1,5 +1,6 @@
 <% if current_page?(page) %>
   <li class="active <%= classes if defined? classes %>"><%= link_to "#{page.name}".html_safe, page.url.empty? ? page : page.url %></li>
 <% else %>
+  <% Rails.logger.debug "=========" + @bottom_pages.to_yaml %>
   <li class="<%= classes if defined? classes %>"><%= link_to "#{page.name}".html_safe, page.url.empty? ? page : page.url %></li>
 <% end %>
