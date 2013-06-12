@@ -60,7 +60,7 @@
               <a class="dropdown-toggle nav btn btn-inverse"
                  data-toggle="dropdown-breaklock" href="#">Products</a>
               <div class="dropdown-menu" role="menu"
-                   aria-labelledby="dLabel">
+                   aria-labelledby="dLabel" data-spy="affix">
                 <div class="container">
                   <h1 style="color: darkgray">Coming Soon!</h1>
                 </div>
@@ -70,7 +70,7 @@
             <div class="dropdown span2 main-nav-bar">
               <a class="dropdown-toggle nav btn btn-inverse"
                  data-toggle="dropdown-breaklock" href="#">Drinks</a>
-              <div class="dropdown-menu revert2" role="menu"
+              <div class="dropdown-menu" role="menu"
                    aria-labelledby="dLabel">
                 <div class="container">
                   <% if @display_drinks_section %>
@@ -94,7 +94,7 @@
             <div class="dropdown span2 main-nav-bar">
               <a class="dropdown-toggle nav btn btn-inverse"
                  data-toggle="dropdown-breaklock" href="#">Contact</a>
-              <div class="dropdown-menu revert10" role="menu"
+              <div class="dropdown-menu" role="menu"
                    aria-labelledby="dLabel">
                 <div class="container">
                   <% if @display_contact_section %>
@@ -109,7 +109,7 @@
             <div class="dropdown span2 main-nav-bar">
               <a class="dropdown-toggle nav btn btn-inverse"
                  data-toggle="dropdown-breaklock" href="#">Events</a>
-              <div class="dropdown-menu revert12" role="menu"
+              <div class="dropdown-menu" role="menu"
                    aria-labelledby="dLabel">
                 <div class="container">
                   <% if @display_events_section %>
@@ -168,8 +168,7 @@
         </div>
         <div class="span3 offset1 follow-footer">
           <h2>Follow Us</h2>
-          <a href="https://www.facebook
-        .com/pages/Carbon-Valley-Coffee-Roasters/412779672151088"><%=
+          <a href="https://www.facebook.com/pages/Carbon-Valley-Coffee-Roasters/412779672151088"><%=
               image_tag('facebook-48.png', :class => 'img-menu img-circle')
           %></a>
           <a href="https://plus.google.com/u/0/107131835154629906866/about"><%=

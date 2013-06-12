@@ -10,7 +10,8 @@ body {
   font-family: Verdana, Geneva, sans-serif;
   margin: 0;
   background-color: #000;
-  background-image: image-url("beans_black_tileable.png");
+  //background-image: image-url("beans_black_tileable.png");
+  background-image: image-url("beans_brown_tileable.png");
   background-position-x: center;
   background-attachment: fixed;
   color: white;
@@ -37,8 +38,8 @@ h1, h2, h3, h4, h5 {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
 }
 
-$edge: rgba(50,50,50,0.5);
-$mid: rgba(0,0,0,0.5);
+$mid: rgba(25,25,25,0.75);
+$edge: rgba(0,0,0,0.75);
 
 .header-bg {
   height: 199px;
@@ -76,7 +77,10 @@ div.dropdown > a:hover + div.dropdown-menu {
 
 .nav > li > a:hover {
   background-color: rgb(238,238,238);
-  background-color: rgba(238,238,238,0.05);
+  background-color: rgba(238,238,238,0.15);
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+
 }
 
 div.main-nav-bar a.nav {
@@ -104,8 +108,9 @@ div.main-nav-bar ul.nav > li {
 }
 
 .main-nav-bar > div.dropdown-menu {
-  top: -5px;
-  position: relative;
+  top: 110px;
+  width: 100%;
+  position: fixed;
   -moz-border-radius: 0;
   border-radius: 0;
   -webkit-border-image: image-url("border.png") 30 30 round; /* Safari 5 */
@@ -114,7 +119,7 @@ div.main-nav-bar ul.nav > li {
   border-width: 1px 0;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.95);
-  box-shadow: 5px 5px 5px rgba(0,0,0,0.95);
+  box-shadow: 0 0 10px rgba(0,0,0,0.95);
 }
 
 .revert2 { left: -140px; }
