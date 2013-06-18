@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610030300) do
+ActiveRecord::Schema.define(:version => 20130618054447) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -82,6 +82,14 @@ ActiveRecord::Schema.define(:version => 20130610030300) do
   add_index "image_handlers_parts", ["image_handler_id", "part_id"], :name => "index_image_handlers_parts_on_image_handler_id_and_part_id"
   add_index "image_handlers_parts", ["part_id"], :name => "index_image_handlers_parts_on_part_id"
 
+  create_table "image_handlers_products", :id => false, :force => true do |t|
+    t.integer "product_id"
+    t.integer "image_handler_id"
+  end
+
+  add_index "image_handlers_products", ["image_handler_id", "product_id"], :name => "index_image_handlers_products_on_image_handler_id_and_product_id", :unique => true
+  add_index "image_handlers_products", ["product_id"], :name => "index_image_handlers_products_on_product_id"
+
   create_table "pages", :force => true do |t|
     t.string   "name"
     t.string   "title"
@@ -100,6 +108,26 @@ ActiveRecord::Schema.define(:version => 20130610030300) do
 
   add_index "pages_sections", ["page_id"], :name => "index_pages_sections_on_page_id"
   add_index "pages_sections", ["section_id", "page_id"], :name => "index_pages_sections_on_section_id_and_page_id", :unique => true
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.decimal  "price",       :precision => 10, :scale => 2
+    t.text     "description"
+    t.string   "image"
+    t.boolean  "active"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  add_index "products", ["active"], :name => "index_active_products"
+
+  create_table "products_sections", :id => false, :force => true do |t|
+    t.integer "product_id"
+    t.integer "section_id"
+  end
+
+  add_index "products_sections", ["product_id"], :name => "index_products_sections_on_product_id"
+  add_index "products_sections", ["section_id", "product_id"], :name => "index_products_sections_on_section_id_and_product_id", :unique => true
 
   create_table "sections", :force => true do |t|
     t.string  "title"

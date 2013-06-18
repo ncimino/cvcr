@@ -14,27 +14,29 @@ body {
   background-image: image-url("beans_brown_tileable.png");
   background-position-x: center;
   background-attachment: fixed;
-  color: white;
+  color: rgb(134,116,104);
   min-width: 940px;
 }
 
 p {
   margin-bottom: 20px;
   font-size: 18px;
-  font-weight: 200;
+  font-weight: 400;
   line-height: 30px;
 }
 
 .lead {
   font-size: 21px;
   font-weight: 400;
+  color: rgb(134,116,104);
 }
 
 h1, h2, h3, h4, h5 {
   font-family: 'Stint Ultra Condensed', Arial, serif;
   font-weight: 500;
   text-rendering: optimizelegibility;
-  color: rgb(134,116,104);
+  //color: rgb(134,116,104);
+  color: white;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
 }
 
@@ -190,6 +192,8 @@ div.main-nav-bar ul.nav > li {
 
 .carousel-caption p {
   margin-bottom: 20px;
+  color: rgb(134,116,104);
+
 }
 
 .carousel, .content-holder {
@@ -215,7 +219,7 @@ footer a {
 }
 
 footer a:hover {
-  color: rgb(70,52,40);
+  color: white;
 }
 
 .img-menu:hover {
@@ -241,4 +245,21 @@ $mid: rgb(70,52,40);
 
 .dropdown-toggle.nav.btn:hover, .btn-primary:hover {
   background-color: rgb(70,52,40);
+}
+
+.currency {
+  color: white;
+  //font-weight: bold;
+  a {
+    font-family: Verdana, Geneva, sans-serif;
+  }
+}
+
+.product-content, .product-image {
+  margin: 0 30px;
+}
+
+hr.lightrule {
+  border-top: 1px solid #252525;
+  border-bottom: 0px solid #3a3a3a;
 }

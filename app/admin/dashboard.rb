@@ -10,6 +10,18 @@ ActiveAdmin.register_page "Dashboard" do
       end
     end
 
+    #columns do
+    #  columns do
+    #   panel "Recent Products" do
+    #     ul do
+    #       Product.recent(5).map do |product|
+    #         li link_to(product.name, admin_product_path(product))
+    #       end
+    #     end
+    #   end
+    #  end
+
+
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do
@@ -28,6 +40,6 @@ ActiveAdmin.register_page "Dashboard" do
     #       para "Welcome to ActiveAdmin."
     #     end
     #   end
-    # end
+    #end
   end # content
 end
