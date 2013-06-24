@@ -59,73 +59,23 @@
       <div class="container">
         <div class="row">
           <div class="span4">
-
-            <div class="dropdown span2 main-nav-bar">
-              <a class="dropdown-toggle nav btn btn-inverse"
-                 data-toggle="dropdown-breaklock" href="#">Products</a>
-              <div class="dropdown-menu" role="menu"
-                   aria-labelledby="dLabel" data-spy="affix">
-                <div class="container">
-                  <h1 style="color: darkgray">Coming Soon!</h1>
-                </div>
-              </div>
-            </div>
-
-            <div class="dropdown span2 main-nav-bar">
-              <a class="dropdown-toggle nav btn btn-inverse"
-                 data-toggle="dropdown-breaklock" href="#">Drinks</a>
-              <div class="dropdown-menu" role="menu"
-                   aria-labelledby="dLabel">
-                <div class="container">
-                  <% if @display_drinks_section %>
-                    <%= render :partial => "pages/section",
-                               :collection => @display_drinks_section,
-                               :as => :section %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-
-
+            <%= render :partial => 'shared/main_buttons',
+                       :locals => { :name => 'Products',
+                                    :sections => @display_products_section } %>
+            <%= render :partial => 'shared/main_buttons',
+                       :locals => { :name => 'Drinks',
+                                    :sections => @display_drinks_section } %>
           </div>
-
           <div class="text-center span4">
             &nbsp;
           </div>
-
           <div class="span4">
-
-            <div class="dropdown span2 main-nav-bar">
-              <a class="dropdown-toggle nav btn btn-inverse"
-                 data-toggle="dropdown-breaklock" href="#">Contact</a>
-              <div class="dropdown-menu" role="menu"
-                   aria-labelledby="dLabel">
-                <div class="container">
-                  <% if @display_contact_section %>
-                    <%= render :partial => "pages/section",
-                               :collection => @display_contact_section,
-                               :as => :section %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-
-            <div class="dropdown span2 main-nav-bar">
-              <a class="dropdown-toggle nav btn btn-inverse"
-                 data-toggle="dropdown-breaklock" href="#">Events</a>
-              <div class="dropdown-menu" role="menu"
-                   aria-labelledby="dLabel">
-                <div class="container">
-                  <% if @display_events_section %>
-                    <%= render :partial => "pages/section",
-                               :collection => @display_events_section,
-                               :as => :section %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-
-
+            <%= render :partial => 'shared/main_buttons',
+                       :locals => { :name => 'Contact',
+                                    :sections => @display_contact_section } %>
+            <%= render :partial => 'shared/main_buttons',
+                       :locals => { :name => 'Events',
+                                    :sections => @display_events_section } %>
           </div>
         </div>
       </div>
@@ -137,41 +87,49 @@
 <% end %>
 
 <% content_for :footer do %>
-  <footer class="footer">
+  <footer class="footer nav-bg">
     <div class="container">
       <div class="row">
-        <div class="span2">
-          <ul class="nav">
-            <% if @display_bottom_pages %>
-              <%= render :partial => "pages/links",
-                         :collection => @display_bottom_pages.each_with_index.map {
-                                 |x,idx| x if idx % 3 == 0 }.compact,
-                         :as => :page %>
-            <% end %>
-          </ul>
-        </div>
-        <div class="span2 offset1">
-          <ul class="nav">
-            <% if @display_bottom_pages %>
-              <%= render :partial => "pages/links",
-                         :collection => @display_bottom_pages.each_with_index.map {
-                                 |x,idx| x if idx % 3 == 1 }.compact,
-                         :as => :page %>
-            <% end %>
-          </ul>
-        </div>
-        <div class="span2 offset1">
-          <ul class="nav">
-            <% if @display_bottom_pages %>
-              <%= render :partial => "pages/links",
-                         :collection => @display_bottom_pages.each_with_index.map {
-                                 |x,idx| x if idx % 3 == 2 }.compact,
-                         :as => :page %>
-            <% end %>
-          </ul>
+        <div class="span8">
+          <div class="row">
+            <div class="span2">
+              <ul class="nav">
+                <% if @display_bottom_pages %>
+                  <%= render :partial => "shared/links",
+                             :collection => @display_bottom_pages.each_with_index.map {
+                                     |x,idx| x if idx % 3 == 0 }.compact,
+                             :as => :page %>
+                <% end %>
+              </ul>
+            </div>
+            <div class="span2 offset1">
+              <ul class="nav">
+                <% if @display_bottom_pages %>
+                  <%= render :partial => "shared/links",
+                             :collection => @display_bottom_pages.each_with_index.map {
+                                     |x,idx| x if idx % 3 == 1 }.compact,
+                             :as => :page %>
+                <% end %>
+              </ul>
+            </div>
+            <div class="span2 offset1">
+              <ul class="nav">
+                <% if @display_bottom_pages %>
+                  <%= render :partial => "shared/links",
+                             :collection => @display_bottom_pages.each_with_index.map {
+                                     |x,idx| x if idx % 3 == 2 }.compact,
+                             :as => :page %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span8">
+              &copy; 2013 Carbon Valley Coffee Roasters, LLC. All rights reserved.
+            </div>
+          </div>
         </div>
         <div class="span3 offset1 follow-footer">
-          <h2>Follow Us</h2>
           <a href="https://www.facebook.com/pages/Carbon-Valley-Coffee-Roasters/412779672151088"><%=
               image_tag('facebook-48.png', :class => 'img-menu img-circle')
           %></a>
@@ -189,9 +147,6 @@
           <div class="pull-right fb-like" data-colorscheme="dark" data-font="verdana" data-layout="button_count" data-send="false" data-show-faces="false" data-width="450">&nbsp;</div>
         </div>
       </div>
-      <div class="row">
-        &copy; 2013 Carbon Valley Coffee Roasters, LLC. All rights reserved.
-      </div>
     </div>
   </footer>
   <script>
@@ -199,7 +154,6 @@
     ga('create', 'UA-41558028-1', 'carbonvalleycoffeeroasters.com');
     ga('send', 'pageview');
   </script>
-  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>-->
   <%= javascript_include_tag 'jquery' %>
   <%= javascript_include_tag 'custom' %>
   <%= javascript_include_tag 'bootstrap' %>

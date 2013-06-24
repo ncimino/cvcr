@@ -1,0 +1,16 @@
+<div class="dropdown span2 main-nav-bar">
+  <a class="dropdown-toggle nav btn btn-inverse"
+     data-toggle="dropdown-breaklock" href="#"><%= name %></a>
+  <div class="dropdown-menu nav-bg" role="menu"
+       aria-labelledby="dLabel">
+    <div class="container">
+      <% if sections.empty? %>
+        <h1 style="color: darkgray">Coming Soon!</h1>
+      <% else %>
+        <%= render :partial => "shared/section",
+                   :collection => sections,
+                   :as => :section %>
+      <% end %>
+    </div>
+  </div>
+</div>

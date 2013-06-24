@@ -4,7 +4,7 @@
   <% else %>
     <li class="disabled"><a href="<%= section.link %>"><%= section.title%></a></li>
   <% end %>
-  <%= render :partial => "pages/links",
+  <%= render :partial => "shared/links",
              :collection => section.pages,
              :as => :page %>
 </ul>

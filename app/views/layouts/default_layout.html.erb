@@ -12,26 +12,14 @@
 <% flash.each do |key, value| %>
   <div id="notice" class="<%= key %> <%= key %>-block"><%= value %></div>
 <% end %>
-<div class="header-bg"></div>
+<div class="header-bg nav-bg"></div>
 <div class="container">
   <div class="text-center logo-holder">
     <%= link_to logo, root_path, :class => 'text-center' %>
   </div>
   <%= yield :header %>
-  <div class="container">
-    <div class="content-holder">
-    <% if content_for?(:title) %>
-      <h1><%= yield :title  %></h1>
-      <hr />
-    <% end %>
-    <%= yield %>
-    </div>
-  </div>
-  <% if Rails.env.development? %>
-    <div class="container content-holder">
-      <%= debug(params) %>
-    </div>
-  <% end %>
+  <%= yield %>
+  <% if Rails.env.development? %><div class="container"><div class="content-holder"><%= debug(params) %></div></div><% end %>
 </div>
 <%= yield :footer %>
 </body>

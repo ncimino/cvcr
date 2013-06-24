@@ -1,7 +1,15 @@
 <% title @page.title %>
 
-<div>
-    <%= @page.content.html_safe %>
-</div>
-
-<br />
+<% unless @page.content.empty? %>
+  <div class="container">
+    <div class="content-holder">
+      <% if content_for?(:title) %>
+        <h1><%= yield :title  %></h1>
+        <hr />
+      <% end %>
+      <div>
+        <%= @page.content.html_safe %>
+      </div>
+    </div>
+  </div>
+<% end %>
