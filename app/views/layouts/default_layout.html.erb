@@ -12,12 +12,9 @@
 <% flash.each do |key, value| %>
   <div id="notice" class="<%= key %> <%= key %>-block"><%= value %></div>
 <% end %>
-<div class="header-bg nav-bg"></div>
+<%= yield :header %>
 <div class="container">
-  <div class="text-center logo-holder">
-    <%= link_to logo, root_path, :class => 'text-center' %>
-  </div>
-  <%= yield :header %>
+  <%=	yield :carousel %>
   <%= yield %>
   <% if Rails.env.development? %><div class="container"><div class="content-holder"><%= debug(params) %></div></div><% end %>
 </div>
