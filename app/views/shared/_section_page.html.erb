@@ -1,1 +1,6 @@
-<tr><td><%= page.name %></td><td><%= page.title %></td></tr>
+<tr class="clickable"><td>
+  <%= link_to page.name, page %>
+  <% if !page.description.nil? %>
+    - <%= link_to page.description, page %>
+  <% end %>
+</td></tr>

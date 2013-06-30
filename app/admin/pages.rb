@@ -30,6 +30,7 @@ ActiveAdmin.register Page do
                 :include_blank => false, :hint => "If _no_ pictures are selected, then a carousel will _not_ be displayed on this page"
       end
       f.input :content, :as => :ckeditor
+      f.input :description
     end
     f.actions
   end

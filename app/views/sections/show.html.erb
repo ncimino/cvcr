@@ -7,7 +7,7 @@
       <hr />
     <% end %>
     <div>
-      <table class="table table-hover">
+      <table data-provides="rowlink" class="table table-hover">
         <tbody>
         <%= render :partial => "shared/section_page",
                    :collection => @section.pages,

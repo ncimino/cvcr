@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130618054447) do
+ActiveRecord::Schema.define(:version => 20130630034956) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -96,9 +96,10 @@ ActiveRecord::Schema.define(:version => 20130618054447) do
     t.text     "content"
     t.string   "url"
     t.integer  "ordinal"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "location"
+    t.text     "description"
   end
 
   create_table "pages_sections", :id => false, :force => true do |t|
