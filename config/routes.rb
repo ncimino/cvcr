@@ -1,6 +1,6 @@
 Cvcr::Application.routes.draw do
 
-  resources :payment_notifications, :line_items, :carts, :sessions
+  #resources :payment_notifications, :line_items, :carts, :sessions
 
   root :to => 'pages#show', :id => 0
 
@@ -13,13 +13,17 @@ Cvcr::Application.routes.draw do
   match '/drinks' => 'sections#drinks'
   match '/contact' => 'sections#contact'
   match '/events' => 'sections#events'
+  match '/payment_notifications' => 'payment_notifications#create'
+  match '/line_items' => 'line_items#create'
+  match '/cart' => 'carts#show'
+  #match '/cart' => 'carts#show'
 
   get 'sessions/new'
-  get 'registrations/edit'
-  get 'registrations/new'
-  get 'authentications/index'
-  get 'authentications/create'
-  get 'authentications/destroy'
+  #get 'registrations/edit'
+  #get 'registrations/new'
+  #get 'authentications/index'
+  #get 'authentications/create'
+  #get 'authentications/destroy'
 
   ActiveAdmin.routes(self)
 

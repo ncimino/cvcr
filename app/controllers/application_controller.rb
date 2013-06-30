@@ -1,10 +1,7 @@
 class ApplicationController < ActionController::Base
-  #filter_parameter_logging :password
-
   before_filter :get_variables, :current_cart
 
   def get_variables
-    #@display_pages = Page.order("ordinal")
     @display_sections = Section.order("ordinal").includes(:products, :pages)
 
     @display_sections.bottom.each { |s|
@@ -36,15 +33,11 @@ class ApplicationController < ActionController::Base
 
   def current_cart
     @current_cart ||= Cart.where(:id => session[:cart_id]).first_or_create()
-        #find_or_create_by!(cart_id: session[:cart_id])
-    #if session[:cart_id]
-    #  @current_cart ||= Cart.find(session[:cart_id])
-    #  session[:cart_id] = nil if @current_cart.purchased_at
-    #end
-    #if session[:cart_id].nil?
-    #  @current_cart = Cart.create!
-    #  session[:cart_id] = @current_cart.id
-    #end
+    if @current_cart.purchased_at
+      session[:cart_id] = nil
+      @current_cart = Cart.create!
+      session[:cart_id] = @current_cart.id
+    end
     @current_cart
   end
 end

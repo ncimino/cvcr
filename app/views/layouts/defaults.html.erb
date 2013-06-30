@@ -65,7 +65,7 @@
 
 <% content_for :header do %>
   <header>
-    <div class="current-cart"><%= link_to 'Cart(' + @current_cart.total_items.to_s + '): ' + number_to_currency(@current_cart.total_price) , @current_cart %></div>
+    <div class="current-cart"><%= link_to 'Cart(' + @current_cart.total_items.to_s + '): ' + number_to_currency(@current_cart.total_price) , :cart %></div>
     <div class="top-bg top-trans"></div>
     <div class="top-bg top-drop"></div>
     <div class="top-bg top-line nav-bg"></div>
