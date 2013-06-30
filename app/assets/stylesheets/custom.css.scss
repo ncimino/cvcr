@@ -99,7 +99,7 @@ header {
 .top-drop {
   top: 50px;
   height: 100px;
-  background-color: rgba(0,0,0,0.35);
+  background-color: rgba(0,0,0,0.5);
 }
 
 div.dropdown-menu:hover {
@@ -134,8 +134,12 @@ div.main-nav-bar ul.nav {
   text-align: left;
 }
 
-div.main-nav-bar ul.nav li:not(.disabled) a {
+div.main-nav-bar ul.nav li a {
   color: rgb(134,116,104);
+}
+
+div.main-nav-bar ul.nav li.section a {
+  color: darkgray;
 }
 
 div.main-nav-bar ul.nav > li {

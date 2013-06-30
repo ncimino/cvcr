@@ -1,0 +1,19 @@
+<% title @section.title %>
+
+<div class="container">
+  <div class="content-holder">
+    <% if content_for?(:title) %>
+      <h1><%= yield :title  %></h1>
+      <hr />
+    <% end %>
+    <div>
+      <table class="table table-hover">
+        <tbody>
+        <%= render :partial => "shared/section_page",
+                   :collection => @section.pages,
+                   :as => :page %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

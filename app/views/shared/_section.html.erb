@@ -1,10 +1,10 @@
-<ul class="nav nav-pills nav-stacked">
-  <% if section.link.nil? %>
-    <li class="disabled"><a href="#"><%= section.title %></a></li>
-  <% else %>
-    <li class="disabled"><a href="<%= section.link %>"><%= section.title%></a></li>
-  <% end %>
-  <%= render :partial => "shared/links",
-             :collection => section.pages,
-             :as => :page %>
-</ul>
+<div>
+  <%= link_to section.title, section, :class => 'brand' %>
+  <table class="table table-hover">
+    <tbody>
+    <%= render :partial => "shared/section_page",
+               :collection => section.pages,
+               :as => :page %>
+    </tbody>
+  </table>
+</div>

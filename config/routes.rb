@@ -5,8 +5,12 @@ Cvcr::Application.routes.draw do
   match '/auth/failure' => 'authentications#failure'
   match '/auth/:provider/callback' => 'authentications#create'
   match '/pages/:id' => 'pages#show', :as => :page
+  match '/sections/:id' => 'sections#show', :as => :section
   match '/products/:id' => 'products#show', :as => :product
   match '/products' => 'products#index'
+  match '/drinks' => 'sections#drinks'
+  match '/contact' => 'sections#contact'
+  match '/events' => 'sections#events'
 
   get 'sessions/new'
   get 'registrations/edit'

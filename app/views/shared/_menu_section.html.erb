@@ -1,0 +1,10 @@
+<ul class="nav nav-pills nav-stacked">
+  <% if section.link.empty? %>
+    <li class="section"><%= link_to section.title, section %></li>
+  <% else %>
+    <li class="section"><%= link_to section.title, section.link %></li>
+  <% end %>
+  <%= render :partial => "shared/links",
+             :collection => section.pages,
+             :as => :page %>
+</ul>

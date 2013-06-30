@@ -7,4 +7,7 @@ class Section < ActiveRecord::Base
   scope :drinks, where(:location => "drinks")
   scope :contact, where(:location => "contact")
   scope :events, where(:location => "events")
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
 end

@@ -1,0 +1,16 @@
+<% title @title %>
+
+<div class="container">
+  <div class="content-holder">
+    <% if content_for?(:title) %>
+      <h1><%= yield :title  %></h1>
+      <hr />
+    <% end %>
+
+    <div>
+      <%= render :partial => "shared/section",
+                 :collection => @sections,
+                 :as => :section %>
+    </div>
+  </div>
+</div>

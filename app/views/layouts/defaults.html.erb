@@ -65,9 +65,11 @@
             <div class="span4">
               <%= render :partial => 'shared/main_buttons',
                          :locals => { :name => 'Products',
+                                      :url => '#',
                                       :sections => @display_products_section } %>
               <%= render :partial => 'shared/main_buttons',
                          :locals => { :name => 'Drinks',
+                                      :url => '/drinks',
                                       :sections => @display_drinks_section } %>
             </div>
             <div class="text-center span4">
@@ -76,9 +78,11 @@
             <div class="span4">
               <%= render :partial => 'shared/main_buttons',
                          :locals => { :name => 'Contact',
+                                      :url => '/contact',
                                       :sections => @display_contact_section } %>
               <%= render :partial => 'shared/main_buttons',
                          :locals => { :name => 'Events',
+                                      :url => '/events',
                                       :sections => @display_events_section } %>
             </div>
           </div>
