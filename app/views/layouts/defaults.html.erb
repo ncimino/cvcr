@@ -59,23 +59,25 @@
     <div class="top-bg top-drop"></div>
     <div class="top-bg top-line nav-bg"></div>
     <div class="top-nav">
-      <!--<div class="top-nav-inner">-->
-        <div class="container">
-          <div class="row">
-            <div class="span4">
+      <div class="container">
+        <div class="row">
+          <div class="span4">
+            <div class="row">
               <%= render :partial => 'shared/main_buttons',
                          :locals => { :name => 'Products',
-                                      :url => '#',
+                                      :url => '/products',
                                       :sections => @display_products_section } %>
               <%= render :partial => 'shared/main_buttons',
                          :locals => { :name => 'Drinks',
                                       :url => '/drinks',
                                       :sections => @display_drinks_section } %>
             </div>
-            <div class="text-center span4">
-              <%= link_to logo, root_path, :class => 'text-center' %>
-            </div>
-            <div class="span4">
+          </div>
+          <div class="text-center span4">
+            <%= link_to logo, root_path, :class => 'text-center' %>
+          </div>
+          <div class="span4">
+            <div class="row">
               <%= render :partial => 'shared/main_buttons',
                          :locals => { :name => 'Contact',
                                       :url => '/contact',
@@ -86,7 +88,7 @@
                                       :sections => @display_events_section } %>
             </div>
           </div>
-        <!--</div>-->
+        </div>
       </div>
     </div>
   </header>
@@ -99,34 +101,40 @@
         <div class="span8">
           <div class="row">
             <div class="span2">
-              <ul class="nav">
-                <% if @display_bottom_pages %>
-                  <%= render :partial => "shared/links",
-                             :collection => @display_bottom_pages.each_with_index.map {
-                                 |x,idx| x if idx % 3 == 0 }.compact,
-                             :as => :page %>
-                <% end %>
-              </ul>
+              <div class="row">
+                <ul class="nav">
+                  <% if @display_bottom_pages %>
+                    <%= render :partial => "shared/page_links",
+                               :collection => @display_bottom_pages.each_with_index.map {
+                                   |x,idx| x if idx % 3 == 0 }.compact,
+                               :as => :page %>
+                  <% end %>
+                </ul>
+              </div>
             </div>
             <div class="span2 offset1">
-              <ul class="nav">
-                <% if @display_bottom_pages %>
-                  <%= render :partial => "shared/links",
-                             :collection => @display_bottom_pages.each_with_index.map {
-                                 |x,idx| x if idx % 3 == 1 }.compact,
-                             :as => :page %>
-                <% end %>
-              </ul>
+              <div class="row">
+                <ul class="nav">
+                  <% if @display_bottom_pages %>
+                    <%= render :partial => "shared/page_links",
+                               :collection => @display_bottom_pages.each_with_index.map {
+                                   |x,idx| x if idx % 3 == 1 }.compact,
+                               :as => :page %>
+                  <% end %>
+                </ul>
+              </div>
             </div>
             <div class="span2 offset1">
-              <ul class="nav">
-                <% if @display_bottom_pages %>
-                  <%= render :partial => "shared/links",
-                             :collection => @display_bottom_pages.each_with_index.map {
-                                 |x,idx| x if idx % 3 == 2 }.compact,
-                             :as => :page %>
-                <% end %>
-              </ul>
+              <div class="row">
+                <ul class="nav">
+                  <% if @display_bottom_pages %>
+                    <%= render :partial => "shared/page_links",
+                               :collection => @display_bottom_pages.each_with_index.map {
+                                   |x,idx| x if idx % 3 == 2 }.compact,
+                               :as => :page %>
+                  <% end %>
+                </ul>
+              </div>
             </div>
           </div>
           <div class="row">
@@ -136,25 +144,28 @@
           </div>
         </div>
         <div class="span3 offset1 follow-footer">
-          <a href="https://www.facebook.com/pages/Carbon-Valley-Coffee-Roasters/412779672151088"><%=
-              image_tag('facebook-48.png', :class => 'img-menu img-circle')
-          %></a>
-          <a href="https://plus.google.com/u/0/107131835154629906866/about"><%=
-              image_tag('googleplus-48.png', :class => 'img-menu img-circle')
-          %></a>
-          <!-- facebook -->
-          <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=511569865564832";
-            fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));</script>
-          <div class="pull-right fb-like" data-colorscheme="dark" data-font="verdana" data-layout="button_count" data-send="false" data-show-faces="false" data-width="450">&nbsp;</div>
+          <div class="row">
+            <a href="https://www.facebook.com/pages/Carbon-Valley-Coffee-Roasters/412779672151088"><%=
+                image_tag('facebook-48.png', :class => 'img-menu img-circle')
+            %></a>
+            <a href="https://plus.google.com/u/0/107131835154629906866/about"><%=
+                image_tag('googleplus-48.png', :class => 'img-menu img-circle')
+            %></a>
+            <!-- facebook like -->
+            <script>(function(d, s, id) {
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return;
+              js = d.createElement(s); js.id = id;
+              js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=511569865564832";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+            <div class="pull-right fb-like" data-colorscheme="dark" data-font="verdana" data-layout="button_count" data-send="false" data-show-faces="false" data-width="450">&nbsp;</div>
+          </div>
         </div>
       </div>
     </div>
   </footer>
+  <!-- google analytics -->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
     ga('create', 'UA-41558028-1', 'carbonvalleycoffeeroasters.com');

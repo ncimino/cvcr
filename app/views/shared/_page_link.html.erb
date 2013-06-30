@@ -1,0 +1,1 @@
+<%= link_to "#{page.name}".html_safe, defined?(page.url) && !page.url.empty? ? page.url : page, :class => "#{defined?(classes) ? classes : ''}" %>

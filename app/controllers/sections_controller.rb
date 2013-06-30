@@ -11,6 +11,18 @@ class SectionsController < ApplicationController
     end
   end
 
+  # GET /products
+  def products
+    @sections = Section.products
+    @title = 'Products'
+
+    if @sections
+      render 'index'
+    else
+      redirect_to root_url
+    end
+  end
+
   # GET /drinks
   def drinks
     @sections = Section.drinks

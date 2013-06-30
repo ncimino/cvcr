@@ -14,7 +14,7 @@ ActiveAdmin.register Section do
       f.input :ordinal
       f.input :location, :as => :select,
               :collection => [['Bottom', 'bottom'],
-                              #['Products', 'products'],
+                              ['Products', 'products'],
                               ['Drinks', 'drinks'],
                               ['Contact', 'contact'],
                               ['Events', 'events'],

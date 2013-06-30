@@ -128,10 +128,14 @@ header {
   top: 75px;
   height: 50px;
 }
+
 .top-drop {
   top: 50px;
   height: 100px;
+  border: 1px solid rgba(255,255,255,0.15);
   background-color: rgba(0,0,0,0.5);
+  //-webkit-box-shadow: 0 0 20px rgb(0,0,0);
+  //box-shadow: 0 0 20px rgb(0,0,0);
 }
 
 div.dropdown-menu:hover {
@@ -236,8 +240,8 @@ div.main-nav-bar ul.nav > li {
   border-bottom: 0px solid rgb(134,116,104);
 }
 
-.logo-holder {
-  position: fixed;
+.img-logo {
+  margin-right: 20px; // to counter gutter and center image
 }
 
 .carousel-caption p {

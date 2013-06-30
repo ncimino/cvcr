@@ -1,6 +1,6 @@
 <tr class="clickable"><td>
-  <%= link_to page.name, page %>
+  <%= render :partial => 'shared/page_link', :locals => { :page => page } %>
   <% if !page.description.nil? %>
-    - <%= link_to page.description, page %>
+    - <%= link_to strip_tags(page.description), page %>
   <% end %>
 </td></tr>

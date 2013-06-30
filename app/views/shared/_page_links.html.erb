@@ -1,0 +1,5 @@
+<% if current_page?(page) %>
+  <li class="active <%= classes if defined? classes %>"><%= render :partial => 'shared/page_link', :locals => { :page => page } %></li>
+<% else %>
+  <li class="<%= classes if defined? classes %>"><%= render :partial => 'shared/page_link', :locals => { :page => page } %></li>
+<% end %>
