@@ -1,5 +1,7 @@
 Cvcr::Application.routes.draw do
 
+  resources :payment_notifications, :line_items, :carts, :sessions
+
   root :to => 'pages#show', :id => 0
 
   match '/auth/failure' => 'authentications#failure'

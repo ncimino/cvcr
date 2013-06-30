@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130630034956) do
+ActiveRecord::Schema.define(:version => 20130630203422) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -54,6 +54,12 @@ ActiveRecord::Schema.define(:version => 20130630034956) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "carts", :force => true do |t|
+    t.datetime "purchased_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "image_handlers", :force => true do |t|
     t.string   "title"
     t.string   "alt"
@@ -90,6 +96,15 @@ ActiveRecord::Schema.define(:version => 20130630034956) do
   add_index "image_handlers_products", ["image_handler_id", "product_id"], :name => "index_image_handlers_products_on_image_handler_id_and_product_id", :unique => true
   add_index "image_handlers_products", ["product_id"], :name => "index_image_handlers_products_on_product_id"
 
+  create_table "line_items", :force => true do |t|
+    t.decimal  "unit_price", :precision => 10, :scale => 2
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.integer  "quantity"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "name"
     t.string   "title"
@@ -109,6 +124,15 @@ ActiveRecord::Schema.define(:version => 20130630034956) do
 
   add_index "pages_sections", ["page_id"], :name => "index_pages_sections_on_page_id"
   add_index "pages_sections", ["section_id", "page_id"], :name => "index_pages_sections_on_section_id_and_page_id", :unique => true
+
+  create_table "payment_notifications", :force => true do |t|
+    t.text     "params"
+    t.integer  "cart_id"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "products", :force => true do |t|
     t.string   "name"

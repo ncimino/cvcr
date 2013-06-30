@@ -6,6 +6,16 @@
   <%= csrf_meta_tag %>
 <% end %>
 
+<% content_for :flash do %>
+  <div class="flash">
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><button type="button" class="close" data-dismiss="alert">&times;</button><%= value %></div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 <% content_for :carousel do %>
   <% if @page %>
     <% unless @page.image_handlers.empty? %>
@@ -55,6 +65,7 @@
 
 <% content_for :header do %>
   <header>
+    <div class="current-cart"><%= link_to 'Cart(' + @current_cart.total_items.to_s + '): ' + number_to_currency(@current_cart.total_price) , @current_cart %></div>
     <div class="top-bg top-trans"></div>
     <div class="top-bg top-drop"></div>
     <div class="top-bg top-line nav-bg"></div>

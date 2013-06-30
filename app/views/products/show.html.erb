@@ -14,9 +14,11 @@
       <div class="product-content">
         <h3 class="currency">
           <%= number_to_currency(@product.price, :unit => "$") %>
-          <a class="btn btn-primary btn-large pull-right">
-            Add to Cart
-          </a>
+          <!--<a class="btn btn-primary btn-large pull-right">-->
+            <!--Add to Cart-->
+          <!--</a>-->
+          <%= link_to "Add to Cart", line_items_path(:product_id => @product),
+                      :method => :post, :class => 'btn btn-primary btn-large pull-right' %>
         </h3>
         <hr class="lightrule" />
         <%= @product.description.html_safe %>

@@ -26,6 +26,24 @@ a:hover {
   color: white;
 }
 
+.flash {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 150;
+  margin: 20px;
+}
+
+.table th.price, .table td.price {
+  text-align: right;
+}
+
+.table th.total, .table td.total {
+  color: #ffffff;
+  font-weight: bold;
+}
+
 .table td {
   border-top: 1px solid rgb(60,60,60);
   border-bottom: 1px solid rgb(60,60,60);
@@ -46,6 +64,11 @@ a:hover {
   cursor: pointer;
 }
 
+.table-striped tbody > tr:nth-child(odd) > td,
+.table-striped tbody > tr:nth-child(odd) > th {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
 p {
   margin-bottom: 20px;
   font-size: 18px;
@@ -53,7 +76,14 @@ p {
   line-height: 30px;
 }
 
-div.container > div.content-holder > div > p {
+div.container > div.content-holder p a {
+  text-decoration: underline;
+}
+
+div.container > div.content-holder > p,
+div.container > div.content-holder > div > p,
+div.container > div.content-holder > table,
+div.container > div.content-holder > div > table {
   margin-top: 25px;
 }
 
@@ -67,12 +97,10 @@ h1, h2, h3, h4, h5 {
   font-family: 'Stint Ultra Condensed', Arial, serif;
   font-weight: 500;
   text-rendering: optimizelegibility;
-  //color: rgb(134,116,104);
   color: white;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.25);
 }
 
-//$mid: rgba(15,15,15,0.95);
 $edge: rgba(0,0,0,0.95);
 $mid: lighten($edge, 3%);
 
@@ -127,6 +155,8 @@ header {
 .top-line {
   top: 75px;
   height: 50px;
+  -webkit-box-shadow: 0 0 20px rgb(0,0,0);
+  box-shadow: 0 3px 3px rgb(0,0,0);
 }
 
 .top-drop {
@@ -134,8 +164,8 @@ header {
   height: 100px;
   border: 1px solid rgba(255,255,255,0.15);
   background-color: rgba(0,0,0,0.5);
-  //-webkit-box-shadow: 0 0 20px rgb(0,0,0);
-  //box-shadow: 0 0 20px rgb(0,0,0);
+  -webkit-box-shadow: 0 0 20px rgb(0,0,0);
+  box-shadow: 0 3px 3px rgb(0,0,0);
 }
 
 div.dropdown-menu:hover {
@@ -188,12 +218,14 @@ div.main-nav-bar ul.nav > li {
   position: fixed;
 }
 
-.revert2 { left: -140px; }
-.revert4 { left: -260px; }
-.revert6 { left: -380px; }
-.revert8 { left: -520px; }
-.revert10 { left: -640px; }
-.revert12 { left: -780px; }
+.current-cart {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: black;
+  border: 1px solid #333;
+  padding: 3px;
+}
 
 .dropdown-toggle.nav {
   margin-bottom: 0;
@@ -241,7 +273,7 @@ div.main-nav-bar ul.nav > li {
 }
 
 .img-logo {
-  margin-right: 20px; // to counter gutter and center image
+  //margin-right: 20px; // to counter gutter and center image
 }
 
 .carousel-caption p {

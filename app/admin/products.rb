@@ -16,7 +16,7 @@ ActiveAdmin.register Product do
     @images = @product.image_handlers unless @product.nil?
     f.inputs "Product" do
       f.input :name
-      f.input :active
+      f.input :active, :as => :hidden
       f.input :price
       f.input :description, :as => :ckeditor
       f.input :sections, :hint => "Hold CTRL+Click to deselect"

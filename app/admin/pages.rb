@@ -12,9 +12,9 @@ ActiveAdmin.register Page do
     @page = Page.find(params[:id]) unless params[:id].nil?
     @images = @page.image_handlers unless @page.nil?
     f.inputs "Page" do
-      f.input :name
+      f.input :name, :label => 'Link Text'
       f.input :title
-      f.input :ordinal
+      f.input :ordinal, :input_html => { :value => 50 }
       f.input :url, :as => :url
       f.input :sections, :hint => "Hold CTRL+Click to deselect"
       if @images.nil?
