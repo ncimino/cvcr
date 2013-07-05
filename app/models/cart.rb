@@ -13,7 +13,7 @@ class Cart < ActiveRecord::Base
 
   def paypal_url(return_url, notify_url)
     values = {
-        :business => 'seller_1326556460_biz@gmail.com',
+        :business => 'nik.cimino-facilitator@gmail.com',
         :cmd => '_cart',
         :upload => 1,
         :return => return_url,
@@ -28,6 +28,7 @@ class Cart < ActiveRecord::Base
                         "quantity_#{index+1}" => item.quantity
                     })
     end
+    Rails.logger.debug(values).to_json;
     'https://www.sandbox.paypal.com/cgi-bin/webscr?' + values.to_query
   end
 end

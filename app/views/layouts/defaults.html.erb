@@ -19,45 +19,47 @@
 <% content_for :carousel do %>
   <% if @page %>
     <% unless @page.image_handlers.empty? %>
-      <div id="myCarousel" class="carousel slide">
-        <ol class="carousel-indicators">
-          <% @page.image_handlers.size.times do | iter |%>
-            <li data-target="#myCarousel" data-slide-to="<%= iter %>"></li>
-          <% end %>
-        </ol>
-        <div class="carousel-inner">
-          <% @page.image_handlers.each do | img |%>
-            <div class="item <%= "active" if defined? first %>">
-              <% first="done" %>
-              <img src="<%=	img.image.url.to_s %>" alt="<%=	img.alt.to_s %>">
-              <% unless img.title.blank? && img.description.blank? && img.button_text.blank? %>
-                <div class="container">
-                  <div class="carousel-caption">
-                    <% unless img.title.blank? %>
-                      <h1><%=	img.title.to_s %></h1>
-                    <% end %>
-                    <% unless img.description.blank? %>
-                      <p class="lead"><%=	img.description.to_s %></p>
-                    <% end %>
-                    <% unless img.button_text.blank? %>
-                      <% if img.button_url.blank? %>
-                        <a class="btn btn-large btn-primary" href="#">
-                          <%= img.button_text.to_s %>
-                        </a>
-                      <% else %>
-                        <a class="btn btn-large btn-primary" href="<%= img.button_url.to_s %>">
-                          <%= img.button_text.to_s %>
-                        </a>
+      <div class="container">
+        <div id="myCarousel" class="carousel slide">
+          <ol class="carousel-indicators">
+            <% @page.image_handlers.size.times do | iter |%>
+              <li data-target="#myCarousel" data-slide-to="<%= iter %>"></li>
+            <% end %>
+          </ol>
+          <div class="carousel-inner">
+            <% @page.image_handlers.each do | img |%>
+              <div class="item <%= "active" if defined? first %>">
+                <% first="done" %>
+                <img src="<%=	img.image.url.to_s %>" alt="<%=	img.alt.to_s %>">
+                <% unless img.title.blank? && img.description.blank? && img.button_text.blank? %>
+                  <div class="container">
+                    <div class="carousel-caption">
+                      <% unless img.title.blank? %>
+                        <h1><%=	img.title.to_s %></h1>
                       <% end %>
-                    <% end %>
+                      <% unless img.description.blank? %>
+                        <p class="lead"><%=	img.description.to_s %></p>
+                      <% end %>
+                      <% unless img.button_text.blank? %>
+                        <% if img.button_url.blank? %>
+                          <a class="btn btn-large btn-primary" href="#">
+                            <%= img.button_text.to_s %>
+                          </a>
+                        <% else %>
+                          <a class="btn btn-large btn-primary" href="<%= img.button_url.to_s %>">
+                            <%= img.button_text.to_s %>
+                          </a>
+                        <% end %>
+                      <% end %>
+                    </div>
                   </div>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
         </div>
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
       </div>
     <% end %>
   <% end %>

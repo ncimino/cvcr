@@ -240,6 +240,15 @@ div.main-nav-bar ul.nav > li {
   text-align: center;
 }
 
+.img-menu {
+  padding-bottom: 10px;
+}
+
+.img-menu:hover {
+  opacity:0.4;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
 .content-holder {
   background-image: image-url('content_bg.png');
   -moz-border-radius: 10px 0;
@@ -256,7 +265,7 @@ div.main-nav-bar ul.nav > li {
 }
 
 .content-holder img {
-  background-image: image-url('content_bg.png');
+  //background-image: image-url('content_bg.png');
   -moz-border-radius: 5px 0;
   border-radius: 5px 5px 0 0;
   -webkit-box-shadow: 0 0 3px rgba(134,116,104,1);
@@ -265,6 +274,14 @@ div.main-nav-bar ul.nav > li {
   border-left: 1px solid rgba(255, 255, 255, 0.27);
   border-top: 1px solid black;
   padding: 0px;
+}
+
+.content-holder img.buy-button {
+  border: 0;
+  moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-box-shadow: 0 0 0 #867468;
+  box-shadow: 0 0 0 white;
 }
 
 .content-holder > hr {
@@ -307,15 +324,6 @@ footer a {
 
 footer a:hover {
   color: white;
-}
-
-.img-menu {
-  padding-bottom: 10px;
-}
-
-.img-menu:hover {
-  opacity:0.4;
-  filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
 $edge: rgb(134,116,104);

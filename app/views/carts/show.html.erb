@@ -1,42 +1,38 @@
 <% title "Shopping Cart" %>
 
-<div class="container">
-  <div class="content-holder table-striped">
-    <h1><%= yield :title  %></h1>
-    <table class="table">
-      <tr>
-        <th>Product</th>
-        <th>Qty</th>
-        <th class="price">Unit Price</th>
-        <th class="price">Full Price</th>
+<div class="container content-holder">
+  <h1><%= yield :title  %></h1>
+  <table class="table table-striped">
+    <tr>
+      <th>Product</th>
+      <th>Qty</th>
+      <th class="price">Unit Price</th>
+      <th class="price">Full Price</th>
+    </tr>
+    <% for line_item in @cart.line_items %>
+      <tr class="<%= cycle :odd, :even %>">
+        <td><%=h line_item.product.name %></td>
+        <td class="qty"><%= line_item.quantity %></td>
+        <td class="price"><%= number_to_currency(line_item.unit_price) %></td>
+        <td class="price"><%= number_to_currency(line_item.full_price) %></td>
       </tr>
-      <% for line_item in @cart.line_items %>
-        <tr class="<%= cycle :odd, :even %>">
-          <td><%=h line_item.product.name %></td>
-          <td class="qty"><%= line_item.quantity %></td>
-          <td class="price"><%= number_to_currency(line_item.unit_price) %></td>
-          <td class="price"><%= number_to_currency(line_item.full_price) %></td>
-        </tr>
-      <% end %>
-      <tr>
-        <td class="total price" colspan="4">
-          Total: <%= number_to_currency @cart.total_price %>
-        </td>
-      </tr>
-    </table>
+    <% end %>
+    <tr>
+      <td class="total price" colspan="4">
+        Total: <%= number_to_currency @cart.total_price %>
+      </td>
+    </tr>
+  </table>
 
-    <p>
-      <%= link_to "Continue Shopping", products_url %> |
-      <%= link_to "Checkout", @cart.paypal_url(products_url, payment_notifications_url) %>
-
-    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_s-xclick">
-      <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
-">
-      <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-      <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form>
-
-    </p>
+  <div class="row">
+    <div class="span6">
+      <%= link_to "Continue Shopping", products_url %>
+    </div>
+    <div class="span6 text-right">
+      <a href="<%= @cart.paypal_url(products_url, payment_notifications_url) %>">
+        <img src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" alt="PayPal - The safer, easier way to pay online!" class="buy-button"/>
+      </a>
+    </div>
   </div>
+
 </div>
