@@ -1,9 +1,9 @@
 <div>
-  <h2><%= link_to section.title, section %></h2>
+  <h2 class="text-center"><%= link_to section.title, section %></h2>
   <div>
     <table class="table table-hover">
       <tbody>
-      <%= render :partial => "shared/section_page",
+      <%= render :partial => "shared/section_page_row",
                  :collection => section.products + section.pages,
                  :as => :page %>
       </tbody>

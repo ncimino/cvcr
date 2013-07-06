@@ -9,7 +9,7 @@
     <div>
       <table data-provides="rowlink" class="table table-hover">
         <tbody>
-        <%= render :partial => "shared/section_page",
+        <%= render :partial => "shared/section_page_row",
                    :collection => @section.products + @section.pages,
                    :as => :page %>
         </tbody>

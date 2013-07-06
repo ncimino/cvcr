@@ -11,7 +11,7 @@
     </tr>
     <% for line_item in @cart.line_items %>
       <tr class="<%= cycle :odd, :even %>">
-        <td><%=h line_item.product.name %></td>
+        <td><%= link_to line_item.product.name, line_item.product %></td>
         <td class="qty"><%= line_item.quantity %></td>
         <td class="price"><%= number_to_currency(line_item.unit_price) %></td>
         <td class="price"><%= number_to_currency(line_item.full_price) %></td>
@@ -29,9 +29,14 @@
       <%= link_to "Continue Shopping", products_url %>
     </div>
     <div class="span6 text-right">
-      <a href="<%= @cart.paypal_url(products_url, payment_notifications_url) %>">
-        <img src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" alt="PayPal - The safer, easier way to pay online!" class="buy-button"/>
-      </a>
+      <!--<a href="<%= @cart.paypal_url(products_url, payment_notifications_url) %>">-->
+        <!--<img src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" alt="PayPal - The safer, easier way to pay online!" class="buy-button"/>-->
+      <!--</a>-->
+      <%= form_tag APP_CONFIG[:paypal_url] do %>
+        <%= hidden_field_tag :cmd, "_s-xclick" %>
+        <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(products_url, payment_notifications_url(:secret => APP_CONFIG[:paypal_secret])) %>
+        <p><%= submit_tag "Checkout", :image => 'https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif', :class => 'PayPal - The safer, easier way to pay online!', :class => 'buy-button' %></p>
+      <% end %>
     </div>
   </div>
 

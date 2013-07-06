@@ -35,6 +35,15 @@ a:hover {
   margin: 20px;
 }
 
+.close {
+  margin-top: 3px;
+}
+
+.alert {
+  box-shadow: 5px 5px 10px rgb(0,0,0);
+  border: 1px solid;
+}
+
 .table th.price, .table td.price {
   text-align: right;
 }
@@ -76,14 +85,12 @@ p {
   line-height: 30px;
 }
 
-div.container > div.content-holder p a {
+div.container.content-holder p a {
   text-decoration: underline;
 }
 
-div.container > div.content-holder > p,
-div.container > div.content-holder > div > p,
-div.container > div.content-holder > table,
-div.container > div.content-holder > div > table {
+div.container.content-holder > p,
+div.container.content-holder > table {
   margin-top: 25px;
 }
 
@@ -124,6 +131,7 @@ $mid: lighten($edge, 3%);
   -webkit-border-image: image-url("border.png") 30 30 round; /* Safari 5 */
   -o-border-image: image-url("border.png") 30 30 round; /* Opera */
   border-image: image-url("border.png") 30 30 round;
+  //border: 1px solid rgba(255,255,255,0.15);
   border-width: 1px 0 1px 0;
   -moz-border-radius: 0;
   border-radius: 0;

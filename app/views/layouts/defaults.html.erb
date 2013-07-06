@@ -117,7 +117,7 @@
               <div class="row">
                 <ul class="nav">
                   <% if @display_bottom_pages %>
-                    <%= render :partial => "shared/page_links",
+                    <%= render :partial => "shared/menu_links",
                                :collection => @display_bottom_pages.each_with_index.map {
                                    |x,idx| x if idx % 3 == 0 }.compact,
                                :as => :page %>
@@ -129,7 +129,7 @@
               <div class="row">
                 <ul class="nav">
                   <% if @display_bottom_pages %>
-                    <%= render :partial => "shared/page_links",
+                    <%= render :partial => "shared/menu_links",
                                :collection => @display_bottom_pages.each_with_index.map {
                                    |x,idx| x if idx % 3 == 1 }.compact,
                                :as => :page %>
@@ -141,7 +141,7 @@
               <div class="row">
                 <ul class="nav">
                   <% if @display_bottom_pages %>
-                    <%= render :partial => "shared/page_links",
+                    <%= render :partial => "shared/menu_links",
                                :collection => @display_bottom_pages.each_with_index.map {
                                    |x,idx| x if idx % 3 == 2 }.compact,
                                :as => :page %>
