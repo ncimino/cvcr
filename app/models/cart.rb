@@ -28,7 +28,6 @@ class Cart < ActiveRecord::Base
                         "quantity_#{index+1}" => item.quantity
                     })
     end
-    Rails.logger.debug(values).to_json;
     'https://www.sandbox.paypal.com/cgi-bin/webscr?' + values.to_query
   end
 
