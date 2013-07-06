@@ -14,9 +14,10 @@ files = ['config/initializers/omniauth.rb',
          'certs/app_key.pem']
 
 domain = "#{Rails.application.class.parent_name.downcase}.econtriver.com"
-user = "root"  # The server's user for deploys
+#domain = 'carbonvalleycoffeeroasters.com'
+user = 'nikc'  # The server's user for deploys
 #deploy_to = "/srv/www/#{domain}"
-deploy_to = "/srv/www/carbonvalleycoffeeroasters.com"
+deploy_to = '/srv/www/carbonvalleycoffeeroasters.com/'
 
 task :setup_server_db do
   system("ssh #{user}@#{domain} 'cd #{File.join(deploy_to,'current')};rake db:setup RAILS_ENV=production'")
