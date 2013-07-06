@@ -7,4 +7,7 @@ $(document).ready(function () {
   $('.clickable').click(function() {
     window.location = $(this).find('a').attr('href');
   });
+  $('*[data-confirm]').click(function(){
+    return confirm($(this).attr('data-confirm'));
+  });
 });

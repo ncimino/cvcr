@@ -3,7 +3,7 @@ ActiveAdmin.register Product do
   index do
     column :name
     column :price
-    column :active
+    #column :active
     column :image do |product|
       image_tag(product.image_handlers.first.image.url(:thumb).to_s)
     end
@@ -39,7 +39,7 @@ ActiveAdmin.register Product do
   show do
     attributes_table do
       row :name
-      row :active
+      #row :active
       row :price do |product|
         number_to_currency(product.price, :unit => "$")
       end

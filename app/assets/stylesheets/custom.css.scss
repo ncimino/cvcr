@@ -68,7 +68,7 @@ a:hover {
   color: white;
 }
 
-.table-hover tbody tr:hover > td, .table-hover tbody tr:hover > th {
+.table-hover tbody tr.clickable:hover > td, .table-hover tbody tr.clickable:hover > th {
   background-color: rgba(255, 255, 255, 0.25);
   cursor: pointer;
 }

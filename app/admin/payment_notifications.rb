@@ -1,6 +1,6 @@
-ActiveAdmin.register Product do
+ActiveAdmin.register PaymentNotification do
 
-  actions :all, :except => [:destroy, :edit]
+  actions :all, :except => [:create, :destroy, :edit]
 
   index do
     column :cart_id

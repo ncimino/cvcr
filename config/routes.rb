@@ -15,7 +15,11 @@ Cvcr::Application.routes.draw do
   match '/events' => 'sections#events'
   match '/payment_notifications' => 'payment_notifications#create'
   match '/line_items' => 'line_items#create'
+  match '/line_items/:id/increment' => 'line_items#increment'
+  match '/line_items/:id/decrement' => 'line_items#decrement'
+  match '/line_items/:id/destroy' => 'line_items#destroy'
   match '/cart' => 'carts#show'
+  match '/cart/new' => 'carts#destroy'
   #match '/cart' => 'carts#show'
 
   get 'sessions/new'

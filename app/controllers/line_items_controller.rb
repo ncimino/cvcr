@@ -1,16 +1,7 @@
 class LineItemsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
-    @cart = current_cart
-    #@line_items = @cart.line_items
-    #@line_items.each { |item|
-    #  @line_item ||= (item.product == @product) ? item : nil
-    #}
-    #if @line_item
-    #  @line_item.
-    #else
-    #  @line_item = LineItem.create!(:cart => @cart, :product => @product, :quantity => 1, :unit_price => @product.price)
-    #end
+    @cart = @current_cart
 
     if !@cart.line_items.exists?(:product_id => @product.id)
       @line_item = LineItem.create!(:cart => @cart, :product => @product, :quantity => 1, :unit_price => @product.price)
@@ -20,5 +11,34 @@ class LineItemsController < ApplicationController
 
     flash[:success] = "Added #{@product.name} to cart."
     redirect_to :cart
+  end
+
+  def increment
+    @line_item = LineItem.find(params[:id])
+    @line_item.increment! :quantity
+    @cart = @current_cart
+
+    flash[:success] = "Added #{@line_item.product.name} to cart."
+    redirect_to cart_url
+  end
+
+  def decrement
+    @line_item = LineItem.find(params[:id])
+    @line_item.decrement! :quantity
+    if @line_item.quantity <= 0
+      @line_item.destroy
+    end
+    flash[:success] = "Removed #{@line_item.product.name} from cart."
+    @cart = @current_cart
+    redirect_to cart_url
+  end
+
+  def destroy
+    @line_item = LineItem.find(params[:id])
+    flash[:success] = "Removed #{@line_item.product.name} from cart."
+    @line_item.destroy
+    @cart = @current_cart
+
+    redirect_to cart_url
   end
 end

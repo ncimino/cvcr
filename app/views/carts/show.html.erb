@@ -12,9 +12,20 @@
     <% for line_item in @cart.line_items %>
       <tr class="<%= cycle :odd, :even %>">
         <td><%= link_to line_item.product.name, line_item.product %></td>
-        <td class="qty"><%= line_item.quantity %></td>
+        <td class="qty">
+          <% if line_item.quantity > 1 %>
+            <%= link_to '<i class="icon-minus-sign"></i>'.html_safe, :controller => 'line_items', :action => 'decrement', :id => line_item %>
+          <% else %>
+            <%= link_to '<i class="icon-minus-sign" data-confirm="This will remove the item from your cart, continue?"></i>'.html_safe, :controller => 'line_items', :action => 'decrement', :id => line_item %>
+          <% end %>
+          <%= line_item.quantity %>
+          <%= link_to '<i class="icon-plus-sign"></i>'.html_safe, :controller => 'line_items', :action => 'increment', :id => line_item %>
+        </td>
         <td class="price"><%= number_to_currency(line_item.unit_price) %></td>
-        <td class="price"><%= number_to_currency(line_item.full_price) %></td>
+        <td class="price">
+          <%= number_to_currency(line_item.full_price) %>
+          <%= link_to '<i class="icon-remove-sign" title="Remove" data-confirm="This will remove the item from your cart, continue?"></i>'.html_safe, :controller => 'line_items', :action => 'destroy', :id => line_item %>
+        </td>
       </tr>
     <% end %>
     <tr>
@@ -26,7 +37,8 @@
 
   <div class="row">
     <div class="span6">
-      <%= link_to "Continue Shopping", products_url %>
+      <%= link_to "Continue Shopping", products_url %> |
+      <%= link_to "Empty Cart", cart_new_url, :data => { :confirm => "Are you sure you want to empty your cart?", :method => :delete } %>
     </div>
     <div class="span6 text-right">
       <!--<a href="<%= @cart.paypal_url(products_url, payment_notifications_url) %>">-->
@@ -35,7 +47,8 @@
       <%= form_tag APP_CONFIG[:paypal_url] do %>
         <%= hidden_field_tag :cmd, "_s-xclick" %>
         <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(products_url, payment_notifications_url(:secret => APP_CONFIG[:paypal_secret])) %>
-        <p><%= submit_tag "Checkout", :image => 'https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif', :class => 'PayPal - The safer, easier way to pay online!', :class => 'buy-button' %></p>
+        <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <!--<p><%# submit_tag "Checkout", :image => 'https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif', :class => 'PayPal - The safer, easier way to pay online!', :class => 'buy-button' %></p>-->
       <% end %>
     </div>
   </div>

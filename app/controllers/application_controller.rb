@@ -33,6 +33,8 @@ class ApplicationController < ActionController::Base
 
   def current_cart
     @current_cart ||= Cart.where(:id => session[:cart_id]).first_or_create()
+    Rails.logger.debug "****** == "+session[:cart_id].to_s
+    Rails.logger.debug "****** == "+@current_cart.to_yaml
     session[:cart_id] = @current_cart.id
     if @current_cart.purchased_at
       session[:cart_id] = nil

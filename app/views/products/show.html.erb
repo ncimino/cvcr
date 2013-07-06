@@ -1,27 +1,25 @@
 <% title @product.name %>
 
-<div class="container">
-  <div class="content-holder">
-    <% if content_for?(:title) %>
-      <h1><%= yield :title  %></h1>
-      <hr />
-    <% end %>
+<div class="container content-holder">
+  <% if content_for?(:title) %>
+    <h1><%= yield :title  %></h1>
+    <hr />
+  <% end %>
 
-    <div class="row">
-      <div class="span5 product-image">
-        <%= image_tag(@product.image_handlers.first.image.url) %>
-      </div>
-      <div class="product-content">
-        <h3 class="currency">
-          <%= number_to_currency(@product.price, :unit => "$") %>
-          <%= link_to "Add to Cart", line_items_path(:product_id => @product),
-                      :method => :post, :class => 'btn btn-primary btn-large pull-right' %>
-        </h3>
-        <hr class="lightrule" />
-        <%= @product.description.html_safe %>
-      </div>
+  <div class="row">
+    <div class="span5 product-image">
+      <%= image_tag(@product.image_handlers.first.image.url) %>
     </div>
-    <br />
-
+    <div class="product-content">
+      <h3 class="currency">
+        <%= number_to_currency(@product.price, :unit => "$") %>
+        <%= link_to "Add to Cart", line_items_path(:product_id => @product),
+                    :method => :post, :class => 'btn btn-primary btn-large pull-right' %>
+      </h3>
+      <hr class="lightrule" />
+      <%= @product.description.html_safe %>
+    </div>
   </div>
+  <br />
+
 </div>
