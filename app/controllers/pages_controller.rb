@@ -13,10 +13,10 @@ class PagesController < ApplicationController
       # show.html.erb
       if @page
         format.html
-        format.json { render json: @page }
+        format.json { render :json => @page }
       else
         format.html { redirect_to :admin_root }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
+        format.json { render :json => @page.errors, :status => :unprocessable_entity }
       end
         
     end
