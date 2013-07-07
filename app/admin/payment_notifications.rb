@@ -27,11 +27,12 @@ ActiveAdmin.register PaymentNotification do
       row :cart_id
       row :status
       row :transaction_id
-      row :params do |payment|
+      row :params
+      #do |payment|
         #JSON.pretty_generate(payment.params.to_json)
         #payment.params.to_json
-        payment.params.gsub(/{/, "<pre>\n ").gsub!(/}/, "</pre>").gsub!(/,/, ",\n").html_safe
-      end
+      #  payment.params.gsub(/{/, "<pre>\n ").gsub!(/}/, "</pre>").gsub!(/,/, ",\n").html_safe
+      #end
       row :created_at
       row :updated_at
     end
