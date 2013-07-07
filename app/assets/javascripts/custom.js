@@ -10,4 +10,7 @@ $(document).ready(function () {
   $('*[data-confirm]').click(function(){
     return confirm($(this).attr('data-confirm'));
   });
+  $('.buy-button').click(function() {
+    alert('On-line purchases are currently disabled.');
+  });
 });
