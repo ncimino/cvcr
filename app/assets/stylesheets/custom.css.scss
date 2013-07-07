@@ -32,7 +32,7 @@ a:hover {
   width: 100%;
   text-align: center;
   z-index: 150;
-  margin: 20px;
+  margin-top: 20px;
 }
 
 .close {
@@ -55,7 +55,7 @@ a:hover {
 
 .table td {
   border-top: 1px solid rgb(60,60,60);
-  border-bottom: 1px solid rgb(60,60,60);
+  //border-bottom: 1px solid rgb(60,60,60);
   color: rgb(134,116,104);
 }
 
@@ -75,7 +75,15 @@ a:hover {
 
 .table-striped tbody > tr:nth-child(odd) > td,
 .table-striped tbody > tr:nth-child(odd) > th {
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.section-row-product {
+  height: 75px;
+}
+
+.section-row {
+  font-weight: bold;
 }
 
 p {
@@ -288,13 +296,18 @@ div.main-nav-bar ul.nav > li {
   border: 0;
   moz-border-radius: 0;
   border-radius: 0;
-  -webkit-box-shadow: 0 0 0 #867468;
+  -webkit-box-shadow: 0 0 0 rgb(134,116,104);
   box-shadow: 0 0 0 white;
 }
 
 .content-holder > hr {
   border-top: 1px solid rgb(70,52,40);
   border-bottom: 0px solid rgb(134,116,104);
+}
+
+hr.gray {
+  border-top: 1px solid rgb(60,60,60);
+  border-bottom: 0px solid rgb(70,70,70);
 }
 
 .img-logo {

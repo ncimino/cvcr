@@ -1,9 +1,5 @@
 <ul class="nav nav-pills nav-stacked">
-  <% if section.link.empty? %>
-    <li class="section"><%= link_to section.title, section %></li>
-  <% else %>
-    <li class="section"><%= link_to section.title, section.link %></li>
-  <% end %>
+  <li class="section"><%= link_to "<i class='icon-chevron-down'></i>&nbsp;#{section.title}".html_safe, section.link.empty? ? section : section.link %></li>
   <%= render :partial => 'shared/menu_links',
              :collection => section.products + section.pages,
              :as => :page %>

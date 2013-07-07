@@ -1,19 +1,19 @@
 <% title @section.title %>
 
-<div class="container">
-  <div class="content-holder">
-    <% if content_for?(:title) %>
-      <h1><%= yield :title  %></h1>
-      <hr />
-    <% end %>
-    <div>
-      <table data-provides="rowlink" class="table table-hover">
-        <tbody>
-        <%= render :partial => "shared/section_page_row",
-                   :collection => @section.products + @section.pages,
-                   :as => :page %>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<div class="container content-holder">
+  <% if content_for?(:title) %>
+    <h1>~ <%= yield :title  %> ~</h1>
+  <% end %>
+  <% if @section.products.count >= 1 || @section.pages.count >= 1 %>
+    <table data-provides="rowlink" class="table table-hover">
+      <tbody>
+      <%= render :partial => "shared/section_page_row",
+                 :collection => @section.products + @section.pages,
+                 :as => :page %>
+      </tbody>
+    </table>
+  <% else %>
+    <hr class="gray" />
+    <%= render :partial => 'shared/coming_soon' %>
+  <% end %>
 </div>
