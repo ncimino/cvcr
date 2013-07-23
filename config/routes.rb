@@ -9,10 +9,7 @@ Cvcr::Application.routes.draw do
   match '/pages/:id' => 'pages#show', :as => :page
   match '/sections/:id' => 'sections#show', :as => :section
   match '/products/:id' => 'products#show', :as => :product
-  match '/products' => 'sections#products'
-  match '/drinks' => 'sections#drinks'
-  match '/contact' => 'sections#contact'
-  match '/events' => 'sections#events'
+  match '/areas/:id' => 'main_areas#show'
   match '/payment_notifications' => 'payment_notifications#create'
   match '/line_items' => 'line_items#create'
   match '/line_items/:id/increment' => 'line_items#increment'

@@ -12,13 +12,7 @@ ActiveAdmin.register Section do
       f.input :title
       f.input :link, :as => :url
       f.input :ordinal
-      f.input :location, :as => :select,
-              :collection => [['Bottom', 'bottom'],
-                              ['Products', 'products'],
-                              ['Drinks', 'drinks'],
-                              ['Contact', 'contact'],
-                              ['Events', 'events'],
-                              ['Disable', 'off']]
+      f.input :main_areas, :hint => "Hold CTRL+Click to deselect"
     end
     f.actions
   end

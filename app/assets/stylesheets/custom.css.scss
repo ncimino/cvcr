@@ -15,7 +15,7 @@ body {
   background-attachment: fixed;
   color: rgb(134,116,104);
   min-width: 940px;
-  padding: 190px 0 85px 0;
+  padding: 153px 0 85px 0;
 }
 
 a {
@@ -99,7 +99,7 @@ div.container.content-holder p a {
 
 div.container.content-holder > p,
 div.container.content-holder > table {
-  margin-top: 25px;
+  margin-top: 55px;
 }
 
 .lead {
@@ -158,14 +158,6 @@ header {
   position: fixed;
   width: 100%;
   z-index: -100;
-}
-
-.top-trans {
-  top: 0;
-  background-position-x: center;
-  background-attachment: fixed;
-  background-image: image-url("beans_brown_tileable.png");
-  height: 75px;
 }
 
 .top-line {

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130630203422) do
+ActiveRecord::Schema.define(:version => 20130723070949) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -104,6 +104,21 @@ ActiveRecord::Schema.define(:version => 20130630203422) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
   end
+
+  create_table "main_areas", :force => true do |t|
+    t.string  "title"
+    t.string  "area_name"
+    t.string  "link"
+    t.integer "ordinal"
+  end
+
+  create_table "main_areas_sections", :id => false, :force => true do |t|
+    t.integer "main_area_id"
+    t.integer "section_id"
+  end
+
+  add_index "main_areas_sections", ["main_area_id"], :name => "index_main_areas_sections_on_main_area_id"
+  add_index "main_areas_sections", ["section_id", "main_area_id"], :name => "index_main_areas_sections_on_section_id_and_main_area_id", :unique => true
 
   create_table "pages", :force => true do |t|
     t.string   "name"
