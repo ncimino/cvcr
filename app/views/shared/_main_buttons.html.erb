@@ -5,7 +5,7 @@
   <div class="dropdown-menu nav-bg" role="menu"
        aria-labelledby="dLabel">
     <div class="container">
-      <% if sections.empty? %>
+      <% if sections.nil? || sections.empty? %>
         <%= render :partial => 'shared/coming_soon' %>
       <% else %>
         <%= render :partial => "shared/menu_section",

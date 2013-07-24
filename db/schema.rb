@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723070949) do
+ActiveRecord::Schema.define(:version => 20130724065550) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -157,6 +157,7 @@ ActiveRecord::Schema.define(:version => 20130723070949) do
     t.boolean  "active"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.text     "content"
   end
 
   add_index "products", ["active"], :name => "index_active_products"

@@ -18,7 +18,8 @@ ActiveAdmin.register Product do
       f.input :name
       f.input :active, :as => :hidden
       f.input :price
-      f.input :description, :as => :ckeditor
+      f.input :content, :as => :ckeditor
+      f.input :description
       f.input :sections, :hint => "Hold CTRL+Click to deselect"
       if @images.nil?
         f.input :image_handlers, :label => "Image".html_safe,
@@ -44,7 +45,9 @@ ActiveAdmin.register Product do
         number_to_currency(product.price, :unit => "$")
       end
       row :description
-      row :sections
+      row :content do |page|
+        page.content.html_safe
+      end
       row :image do |product|
         image_tag(product.image_handlers.first.image.url.to_s)
       end

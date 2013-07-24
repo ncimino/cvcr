@@ -73,31 +73,46 @@
     <div class="top-nav">
       <div class="container">
         <div class="row">
+          <% if current_page?(root_url) %>
+            <div class="text-center span4">
+              <%= link_to logo, root_path, :class => 'text-center' %>
+            </div>
+          <% end %>
           <div class="span4">
             <div class="row">
+              <% if @area1 %>
               <%= render :partial => 'shared/main_buttons',
-                         :locals => { :name => 'Products',
-                                      :url => '/products',
-                                      :sections => @display_products_section } %>
+                         :locals => { :name => @area1.title,
+                                      :url => url_for(@area1),
+                                      :sections => @area1_sections } %>
+              <% end %>
+              <% if @area2 %>
               <%= render :partial => 'shared/main_buttons',
-                         :locals => { :name => 'Drinks',
-                                      :url => '/drinks',
-                                      :sections => @display_drinks_section } %>
+                         :locals => { :name => @area2.title,
+                                      :url => url_for(@area2),
+                                      :sections => @area2_sections } %>
+              <% end %>
             </div>
           </div>
-          <div class="text-center span4">
-            <%= link_to logo, root_path, :class => 'text-center' %>
-          </div>
+          <% if !current_page?(root_url) %>
+            <div class="text-center span4">
+              <%= link_to logo, root_path, :class => 'text-center' %>
+            </div>
+          <% end %>
           <div class="span4">
             <div class="row">
+              <% if @area3 %>
               <%= render :partial => 'shared/main_buttons',
-                         :locals => { :name => 'Contact',
-                                      :url => '/contact',
-                                      :sections => @display_contact_section } %>
+                         :locals => { :name => @area3.title,
+                                      :url => url_for(@area3),
+                                      :sections => @area3_sections } %>
+              <% end %>
+              <% if @area4 %>
               <%= render :partial => 'shared/main_buttons',
-                         :locals => { :name => 'Events',
-                                      :url => '/events',
-                                      :sections => @display_events_section } %>
+                         :locals => { :name => @area4.title,
+                                      :url => url_for(@area4),
+                                      :sections => @area4_sections } %>
+              <% end %>
             </div>
           </div>
         </div>

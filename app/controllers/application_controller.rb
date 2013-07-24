@@ -2,31 +2,32 @@ class ApplicationController < ActionController::Base
   before_filter :get_variables, :current_cart
 
   def get_variables
-    @display_sections = Section.order("ordinal").includes(:products, :pages)
-
-    @display_sections.bottom.each { |s|
-      @display_bottom_pages = s.pages.order ("ordinal")
-    } unless @display_sections.nil?
-
-    @display_products_section = Array.new
-    @display_sections.products.each { |s|
-      @display_products_section.push(s)
-    } unless @display_sections.nil?
-
-    @display_drinks_section = Array.new
-    @display_sections.drinks.each { |s|
-      @display_drinks_section.push(s)
-    } unless @display_sections.nil?
-
-    @display_contact_section = Array.new
-    @display_sections.contact.each { |s|
-      @display_contact_section.push(s)
-    } unless @display_sections.nil?
-
-    @display_events_section = Array.new
-    @display_sections.events.each { |s|
-      @display_events_section.push(s)
-    } unless @display_sections.nil?
+    @areas = MainArea.all
+    if @areas.size > 0
+      @bottom_area = MainArea.find_by_area_name(1)
+      if @bottom_area
+        @bottom_section = @bottom_area.sections.order("ordinal").includes(:products, :pages)
+        if @bottom_section && @bottom_section.first
+          @bottom_pages = @bottom_section.first.pages
+        end
+      end
+    end
+    if @areas.size > 1
+      @area1 = MainArea.find_by_area_name(2)
+      @area1_sections = @area1.sections.order("ordinal").includes(:products, :pages)
+    end
+    if @areas.size > 2
+      @area2 = MainArea.find_by_area_name(3)
+      @area2_section = @area2.sections.order("ordinal").includes(:products, :pages)
+    end
+    if @areas.size > 3
+      @area3 = MainArea.find_by_area_name(4)
+      @area3_sections = @area3.sections.order("ordinal").includes(:products, :pages)
+    end
+    if @areas.size > 4
+      @area4 = MainArea.find_by_area_name(5)
+      @area4_section = @area4.sections.order("ordinal").includes(:products, :pages)
+    end
   end
 
   protect_from_forgery
@@ -42,3 +43,4 @@ class ApplicationController < ActionController::Base
     @current_cart
   end
 end
+

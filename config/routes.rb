@@ -7,9 +7,9 @@ Cvcr::Application.routes.draw do
   match '/auth/failure' => 'authentications#failure'
   match '/auth/:provider/callback' => 'authentications#create'
   match '/pages/:id' => 'pages#show', :as => :page
-  match '/sections/:id' => 'sections#show', :as => :section
   match '/products/:id' => 'products#show', :as => :product
-  match '/areas/:id' => 'main_areas#show'
+  match '/sections/:id' => 'sections#show', :as => :section
+  match '/areas/:id' => 'main_areas#show', :as => :main_area
   match '/payment_notifications' => 'payment_notifications#create'
   match '/line_items' => 'line_items#create'
   match '/line_items/:id/increment' => 'line_items#increment'

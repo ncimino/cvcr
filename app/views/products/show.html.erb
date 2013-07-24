@@ -17,7 +17,7 @@
                     :method => :post, :class => 'btn btn-primary btn-large pull-right' %>
       </h3>
       <hr class="lightrule" />
-      <%= @product.description.html_safe %>
+      <%= @product.content ? @product.content.html_safe : "" %>
     </div>
   </div>
   <br />
