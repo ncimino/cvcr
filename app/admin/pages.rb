@@ -14,7 +14,7 @@ ActiveAdmin.register Page do
     f.inputs "Page" do
       f.input :name, :label => 'Link Text', :hint => 'Menu button text'
       f.input :title, :hint => 'Shows at top of page'
-      f.input :ordinal, :input_html => { :value => 50 }
+      f.input :ordinal
       f.input :url, :as => :url, :hint => 'Use this to link to a specifc URL, this means that the page content will never be displayed (creates a link)'
       f.input :sections, :hint => "Hold CTRL+Click to deselect"
       if @images.nil?
@@ -30,7 +30,7 @@ ActiveAdmin.register Page do
                 :include_blank => false, :hint => "If _no_ pictures are selected, then a carousel will _not_ be displayed on this page"
       end
       f.input :content, :as => :ckeditor
-      f.input :description
+      f.input :description, :hint => "This is the brief description that shows on menus"
     end
     f.actions
   end

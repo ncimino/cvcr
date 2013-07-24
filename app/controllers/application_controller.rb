@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     end
     if @areas.size > 2
       @area2 = MainArea.find_by_area_name(3)
-      @area2_section = @area2.sections.order("ordinal").includes(:products, :pages)
+      @area2_sections = @area2.sections.order("ordinal").includes(:products, :pages)
     end
     if @areas.size > 3
       @area3 = MainArea.find_by_area_name(4)
@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     end
     if @areas.size > 4
       @area4 = MainArea.find_by_area_name(5)
-      @area4_section = @area4.sections.order("ordinal").includes(:products, :pages)
+      @area4_sections = @area4.sections.order("ordinal").includes(:products, :pages)
     end
   end
 

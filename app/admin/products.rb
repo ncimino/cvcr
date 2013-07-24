@@ -19,7 +19,7 @@ ActiveAdmin.register Product do
       f.input :active, :as => :hidden
       f.input :price
       f.input :content, :as => :ckeditor
-      f.input :description
+      f.input :description, :hint => "This is the brief description that shows on menus"
       f.input :sections, :hint => "Hold CTRL+Click to deselect"
       if @images.nil?
         f.input :image_handlers, :label => "Image".html_safe,

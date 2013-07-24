@@ -3,7 +3,7 @@ ActiveAdmin.register Section do
   index do
     column :title
     column :ordinal
-    column :location
+    #column :location
     default_actions
   end
 
@@ -22,7 +22,7 @@ ActiveAdmin.register Section do
       row :title
       row :link
       row :ordinal
-      row :location
+      #row :location
     end
     active_admin_comments
   end
