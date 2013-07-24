@@ -126,44 +126,9 @@
     <div class="container">
       <div class="row">
         <div class="span8">
-          <div class="row">
-            <div class="span2">
-              <div class="row">
-                <ul class="nav">
-                  <% if @display_bottom_pages %>
-                    <%= render :partial => "shared/menu_links",
-                               :collection => @display_bottom_pages.each_with_index.map {
-                                   |x,idx| x if idx % 3 == 0 }.compact,
-                               :as => :page %>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-            <div class="span2 offset1">
-              <div class="row">
-                <ul class="nav">
-                  <% if @display_bottom_pages %>
-                    <%= render :partial => "shared/menu_links",
-                               :collection => @display_bottom_pages.each_with_index.map {
-                                   |x,idx| x if idx % 3 == 1 }.compact,
-                               :as => :page %>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-            <div class="span2 offset1">
-              <div class="row">
-                <ul class="nav">
-                  <% if @display_bottom_pages %>
-                    <%= render :partial => "shared/menu_links",
-                               :collection => @display_bottom_pages.each_with_index.map {
-                                   |x,idx| x if idx % 3 == 2 }.compact,
-                               :as => :page %>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <%= render :partial => "shared/bottom_section",
+                     :collection => @bottom_sections,
+                     :as => :section %>
           <div class="row">
             <div class="span8">
               &copy; 2013 Carbon Valley Coffee Roasters, LLC. All rights reserved.

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="span2">
+    <div class="row">
+      <ul class="nav">
+        <% if section.pages %>
+          <%= render :partial => "shared/menu_links",
+                     :collection => section.pages.each_with_index.map {
+                         |x,idx| x if idx % 3 == 0 }.compact,
+                     :as => :page %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="span2 offset1">
+    <div class="row">
+      <ul class="nav">
+        <% if section.pages %>
+          <%= render :partial => "shared/menu_links",
+                     :collection => section.pages.each_with_index.map {
+                         |x,idx| x if idx % 3 == 1 }.compact,
+                     :as => :page %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="span2 offset1">
+    <div class="row">
+      <ul class="nav">
+        <% if section.pages %>
+          <%= render :partial => "shared/menu_links",
+                     :collection => section.pages.each_with_index.map {
+                         |x,idx| x if idx % 3 == 2 }.compact,
+                     :as => :page %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
