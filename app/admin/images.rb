@@ -4,7 +4,7 @@ ActiveAdmin.register ImageHandler, :as => "Image" do
     column :title
     column :alt
     column :image do |img|
-      if img.image.file.exists?
+      if !img.image.file.nil? && img.image.file.exists?
         image_tag(img.image.url(:thumb).to_s)
       else
         'No image uploaded'
@@ -21,7 +21,7 @@ ActiveAdmin.register ImageHandler, :as => "Image" do
       f.input :button_url, :hint => 'If used in a carousel, this is where the user will be redirected when the button is clicked'
       f.input :alt, :label => "Hidden Text", :hint => 'This is alternate text that will show if the image cannot be displayed (this is good to use for search engine optimization)'
       f.input :link, :hint => 'Set this URL if you would like the user to be able to click on the image and be taken to another page'
-      if f.object.image.file.exists?
+      if !f.object.image.file.nil? && f.object.image.file.exists?
         f.input :image, :as => :file, :label => "Image Upload", :hint => "#{f.template.image_tag(f.object.image.url(:thumb).to_s)} - Choose file to replace the current image".html_safe
       else
         f.input :image, :as => :file, :label => "Image Upload", :hint => "No image found - Choose file to replace the current image".html_safe
@@ -41,7 +41,7 @@ ActiveAdmin.register ImageHandler, :as => "Image" do
       row :alt
       row :link
       row :image do |img|
-        if img.image.file.exists?
+        if !img.image.file.nil? && img.image.file.exists?
           image_tag(img.image.url.to_s)
         else
           'No image uploaded'

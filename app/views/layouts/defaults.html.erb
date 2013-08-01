@@ -28,7 +28,7 @@
           </ol>
           <div class="carousel-inner">
             <% @page.image_handlers.each do | img | %>
-              <% if img.image.file.exists? %>
+              <% if !img.image.file.nil? && img.image.file.exists? %>
                 <div class="item <%= "active" if defined? first %>">
                   <% first="done" %>
                   <img src="<%=	img.image.url.to_s %>" alt="<%=	img.alt.to_s %>">
