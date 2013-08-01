@@ -8,7 +8,7 @@
 
   <div class="row">
     <div class="span5 product-image">
-      <%= image_tag(@product.image_handlers.first.image.url) %>
+      <%= image_tag(@product.image_handlers.first.image.url) if @product.image_handlers.first.image.file.exists? %>
     </div>
     <div class="product-content">
       <h3 class="currency">
