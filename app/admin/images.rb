@@ -3,9 +3,9 @@ ActiveAdmin.register ImageHandler, :as => "Image" do
   index do
     column :title
     column :alt
-    column :image do |img|
-      image_tag(img.image_url(:thumb).to_s) unless img.image_url.empty?
-    end
+    #column :image do |img|
+    #  image_tag(img.image_url(:thumb).to_s) unless img.image_url.empty?
+    #end
     default_actions
   end
 
