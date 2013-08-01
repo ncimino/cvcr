@@ -70,6 +70,17 @@
     <div class="current-cart"><i class='icon-shopping-cart'></i>&nbsp;<%= link_to "Cart(#{@current_cart.total_items.to_s}): #{number_to_currency(@current_cart.total_price)}".html_safe , :cart %></div>
     <div class="top-bg top-drop"></div>
     <div class="top-bg top-line nav-bg"></div>
+    <% if current_page?(root_url) %>
+      <div class="top-bg">
+        <div class="container">
+          <div class="row">
+            <div class="offset5">
+              <h1 class="title-fixed-top">Carbon Valley Coffee Roasters</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
     <div class="top-nav">
       <div class="container">
         <div class="row">

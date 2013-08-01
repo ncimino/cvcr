@@ -119,6 +119,10 @@ h1, h2, h3, h4, h5 {
 $edge: rgba(0,0,0,0.95);
 $mid: lighten($edge, 3%);
 
+.title-fixed-top {
+  text-shadow: 2px 2px rgb(0, 0, 0);
+}
+
 .nav-bg {
   background-image: linear-gradient(bottom, $edge 0%, $mid 50%, $edge 100%);
   background-image: -o-linear-gradient(bottom, $edge 0%,  50%, $edge 100%);
