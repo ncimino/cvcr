@@ -4,7 +4,7 @@ ActiveAdmin.register ImageHandler, :as => "Image" do
     column :title
     column :alt
     column :image do |img|
-      image_tag(img.image_url(:thumb).to_s)
+      image_tag(img.image.url.to_s)
     end
     default_actions
   end
