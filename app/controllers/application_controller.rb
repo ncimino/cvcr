@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
     if @bottom_area = MainArea.find_by_area_name(1)
       @bottom_sections = @bottom_area.sections.order("ordinal").includes(:products, :pages)
     end
-    Rails.logger.debug "====================== #{@bottom_area.area_name}"
     if @area1 = MainArea.find_by_area_name(2)
       @area1_sections = @area1.sections.order("ordinal").includes(:products, :pages)
     end
