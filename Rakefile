@@ -11,7 +11,7 @@ files = ['config/initializers/omniauth.rb',
          'config/database.yml',
          'config/initializers/secret_token.rb',
          'config/app_config.yml',
-         'certs/app_key.pem']
+         'certs/app_key.pem' ]
 
 domain = "#{Rails.application.class.parent_name.downcase}.econtriver.com"
 #domain = 'carbonvalleycoffeeroasters.com'

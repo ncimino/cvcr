@@ -8,7 +8,7 @@
       <% if sections.nil? || sections.empty? %>
         <%= render :partial => 'shared/coming_soon' %>
       <% else %>
-        <%= render :partial => "shared/menu_section",
+        <%= render :partial => 'shared/menu_section',
                    :collection => sections,
                    :as => :section %>
       <% end %>

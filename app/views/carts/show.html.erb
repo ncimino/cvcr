@@ -28,6 +28,12 @@
         </td>
       </tr>
     <% end %>
+    <tr class="<%= cycle :odd, :even %>">
+      <td><i>Shipping</i></td>
+      <td></td>
+      <td class="price"><%= number_to_currency(@cart.shipping_cost) %></td>
+      <td class="price"><%= number_to_currency(@cart.total_shipping) %></td>
+    </tr>
     <tr>
       <td class="total price" colspan="4">
         Total: <%= number_to_currency @cart.total_price %>

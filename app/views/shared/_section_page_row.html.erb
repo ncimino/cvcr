@@ -1,10 +1,8 @@
 <tr class="clickable"><td>
+  <%= image_tag(page.image_handlers.first.image.url(:thumb), :class => 'pull-right section-row-product')  if page.instance_of?(Product) %>
   <%= render :partial => 'shared/page_link', :locals => { :page => page, :classes => 'section-row' } %>
   <% if !page.description.nil? && !page.description.empty?%>
     <%= link_to ' - ' + strip_tags(page.description), page %>
   <% end %>
-  <% if page.instance_of?(Product) %>
-    <%= link_to ' - ' + number_to_currency(page.price), page %>
-    <%= image_tag(page.image_handlers.first.image.url(:thumb), :class => 'pull-right section-row-product') %>
-  <% end %>
+  <%= link_to ' - ' + number_to_currency(page.price), page if page.instance_of?(Product) %>
 </td></tr>

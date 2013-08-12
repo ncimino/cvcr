@@ -6,6 +6,8 @@
 
 @import url(http://fonts.googleapis.com/css?family=Stint+Ultra+Condensed);
 
+$lightbrown: rgb(204, 185, 168);
+
 body {
   font-family: Verdana, Geneva, sans-serif;
   margin: 0;
@@ -13,17 +15,25 @@ body {
   background-image: image-url("beans_brown_tileable.png");
   background-position-x: center;
   background-attachment: fixed;
-  color: rgb(134,116,104);
+  color: $lightbrown;
   min-width: 940px;
   padding: 153px 0 85px 0;
 }
 
 a {
-  color: rgb(134,116,104);
+  color: $lightbrown;
 }
 
 a:hover {
   color: white;
+}
+
+.center-logo {
+  position: relative;
+  left: 305px;
+  margin-right: -150px;
+  width: 0;
+  height: 0;
 }
 
 .floating-logo {
@@ -64,11 +74,11 @@ a:hover {
 .table td {
   border-top: 1px solid rgb(60,60,60);
   //border-bottom: 1px solid rgb(60,60,60);
-  color: rgb(134,116,104);
+  color: $lightbrown;
 }
 
 .table td a:hover {
-  //color: rgb(134,116,104);
+  //color: $lightbrown;
   text-decoration: none;
 }
 
@@ -113,7 +123,7 @@ div.container.content-holder > table {
 .lead {
   font-size: 21px;
   font-weight: 400;
-  color: rgb(134,116,104);
+  color: $lightbrown;
 }
 
 h1, h2, h3, h4, h5 {
@@ -221,7 +231,7 @@ div.main-nav-bar ul.nav {
 }
 
 div.main-nav-bar ul.nav li a {
-  color: rgb(134,116,104);
+  color: $lightbrown;
 }
 
 div.main-nav-bar ul.nav li.section a {
@@ -310,13 +320,13 @@ div.main-nav-bar ul.nav > li {
   border: 0;
   moz-border-radius: 0;
   border-radius: 0;
-  -webkit-box-shadow: 0 0 0 rgb(134,116,104);
+  -webkit-box-shadow: 0 0 0 $lightbrown;
   box-shadow: 0 0 0 white;
 }
 
 .content-holder > hr {
   border-top: 1px solid rgb(70,52,40);
-  border-bottom: 0px solid rgb(134,116,104);
+  border-bottom: 0px solid $lightbrown;
 }
 
 hr.gray {
@@ -330,7 +340,7 @@ hr.gray {
 
 .carousel-caption p {
   margin-bottom: 20px;
-  color: rgb(134,116,104);
+  color: $lightbrown;
 
 }
 
@@ -354,14 +364,14 @@ footer ul.nav {
 }
 
 footer a {
-  color: rgb(134,116,104);
+  color: $lightbrown;
 }
 
 footer a:hover {
   color: white;
 }
 
-$edge: rgb(134,116,104);
+$edge: $lightbrown;
 $mid: rgb(70,52,40);
 
 .dropdown-toggle.nav.btn, .btn-primary {

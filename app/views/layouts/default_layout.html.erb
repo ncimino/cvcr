@@ -10,7 +10,11 @@
 </head>
 <body>
 <%= yield :flash %>
-<%= yield :header %>
+<% if current_page?(root_url) %>
+  <%= yield :root_header %>
+<% else %>
+  <%= yield :header %>
+<% end %>
 <%=	yield :carousel %>
 <%= yield %>
 <% if Rails.env.development? %><div class="container content-holder"><%= debug(params) %></div><% end %>

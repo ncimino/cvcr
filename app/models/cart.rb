@@ -3,7 +3,16 @@ class Cart < ActiveRecord::Base
 
   def total_price
     # convert to array so it doesn't try to do sum on database directly
-    line_items.to_a.sum(&:full_price)
+    line_items.to_a.sum(&:full_price)+total_shipping
+  end
+
+  def shipping_cost
+    12.35
+  end
+
+  def total_shipping
+    # convert to array so it doesn't try to do sum on database directly
+    shipping_cost*total_items
   end
 
   def total_items

@@ -1,17 +1,24 @@
 <% title @area.title %>
 
 <div class="container content-holder">
+  <div class="row">
   <% if content_for?(:title) %>
-    <h1><i class="icon-th-large icon-white" style="margin:13px;"></i><%= yield :title  %></h1>
+    <div class="span12">
+      <h1><i class="icon-th-large icon-white" style="margin:13px;"></i><%= yield :title  %></h1>
+    </div>
   <% end %>
 
-  <% if @area.sections.count >= 1 %>
+  <% if @area.sections.count >= 2 %>
     <%= render :partial => "shared/section",
                :collection => @area.sections,
                :as => :section %>
+  <% elsif @area.sections.count == 1 %>
+      <%= render :partial => "shared/a_section",
+                 :collection => @area.sections,
+                 :as => :section %>
   <% else %>
     <hr style="border: 0; border-top: 1px solid #3c3c3c"/>
     <%= render :partial => 'shared/coming_soon' %>
   <% end %>
-
+  </div>
 </div>
