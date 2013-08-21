@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130724065550) do
+ActiveRecord::Schema.define(:version => 20130821031435) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -139,6 +139,22 @@ ActiveRecord::Schema.define(:version => 20130724065550) do
 
   add_index "pages_sections", ["page_id"], :name => "index_pages_sections_on_page_id"
   add_index "pages_sections", ["section_id", "page_id"], :name => "index_pages_sections_on_section_id_and_page_id", :unique => true
+
+  create_table "parameters", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "params", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "params", ["key"], :name => "index_params_on_key", :unique => true
 
   create_table "payment_notifications", :force => true do |t|
     t.text     "params"

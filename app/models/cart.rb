@@ -46,6 +46,12 @@ class Cart < ActiveRecord::Base
                         "quantity_#{index+1}" => item.quantity
                     })
     end
+    values.merge!({
+                      "amount_#{index+1}" => total_shipping,
+                      "item_name_#{index+1}" => 'Shipping',
+                      "item_number_#{index+1}" => 0,
+                      "quantity_#{index+1}" => item.quantity
+                  })
     'https://www.sandbox.paypal.com/cgi-bin/webscr?' + values.to_query
   end
 
@@ -67,6 +73,12 @@ class Cart < ActiveRecord::Base
                         "quantity_#{index+1}" => item.quantity
                     })
     end
+    values.merge!({
+                      "amount_#{index+1}" => total_shipping,
+                      "item_name_#{index+1}" => 'Shipping',
+                      "item_number_#{index+1}" => 0,
+                      "quantity_#{index+1}" => item.quantity
+                  })
     encrypt_for_paypal(values)
   end
 
