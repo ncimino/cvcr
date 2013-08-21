@@ -58,7 +58,7 @@ class Cart < ActiveRecord::Base
         :invoice => id,
         :notify_url => notify_url,
         :cert_id => APP_CONFIG[:paypal_cert_id],
-        :mc_shipping => total_shipping
+        :handling => total_shipping
     }
     line_items.each_with_index do |item, index|
       values.merge!({
