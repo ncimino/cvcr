@@ -32,11 +32,11 @@
       <td><i>Shipping</i></td>
       <td></td>
       <td class="price"><%# number_to_currency(@cart.shipping_cost) %></td>
-      <td class="price"><%= number_to_currency(@cart.total_shipping) %></td>
+      <td class="price"><%= number_to_currency(@cart.total_shipping) %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     <tr>
       <td class="total price" colspan="4">
-        Total: <%= number_to_currency @cart.total_price %>
+        Total: <%= number_to_currency @cart.total_price %> &nbsp;&nbsp;&nbsp;
       </td>
     </tr>
   </table>
