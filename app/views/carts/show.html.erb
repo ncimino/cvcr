@@ -31,7 +31,7 @@
     <tr class="<%= cycle :odd, :even %>">
       <td><i>Shipping</i></td>
       <td></td>
-      <td class="price"><%# number_to_currency(@cart.shipping_cost) %></td>
+      <td></td>
       <td class="price"><%= number_to_currency(@cart.total_shipping) %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     <tr>
@@ -49,7 +49,7 @@
     <div class="span6 text-right">
       <%= form_tag APP_CONFIG[:paypal_url] do %>
         <%= hidden_field_tag :cmd, "_s-xclick" %>
-        <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(url_for(@area1), payment_notifications_url(:secret => APP_CONFIG[:paypal_secret])) %>
+        <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(URI.join(root_url, url_for(@area1)), payment_notifications_url(:secret => APP_CONFIG[:paypal_secret])) %>
         <input type="image" class="hide" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
         <img class="buy-button" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
       <% end %>
