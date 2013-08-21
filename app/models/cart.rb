@@ -6,13 +6,22 @@ class Cart < ActiveRecord::Base
     line_items.to_a.sum(&:full_price)+total_shipping
   end
 
-  def shipping_cost
-    12.35
-  end
-
   def total_shipping
-    # convert to array so it doesn't try to do sum on database directly
-    shipping_cost*total_items
+    price_1_2 = 5.6
+    price_3_6 = 12.35
+    price_7_8 = 16.85
+    price_other = 0
+    if total_items > 8
+      price_other
+    elsif total_items >= 7
+      price_7_8
+    elsif total_items >= 3
+      price_3_6
+    elsif total_items >= 1
+      price_1_2
+    else
+      price_other
+    end
   end
 
   def total_items
@@ -61,7 +70,7 @@ class Cart < ActiveRecord::Base
     encrypt_for_paypal(values)
   end
 
-  PAYPAL_CERT_PEM = File.read("#{Rails.root}/certs/paypal_cert.sandbox.pem")
+  PAYPAL_CERT_PEM = File.read("#{Rails.root}/certs/paypal_cert.pem")
   APP_CERT_PEM = File.read("#{Rails.root}/certs/app_cert.pem")
   APP_KEY_PEM = File.read("#{Rails.root}/certs/app_key.pem")
 
