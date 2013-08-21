@@ -28,7 +28,7 @@ ActiveAdmin.register PaymentNotification do
       row :status
       row :transaction_id
       row :params do |payment|
-        ( "<pre>" + eval(payment.params).map { |k, v| "#{k} = #{v}" }.join("\n") + "</pre>" ).html_safe
+        "<pre>#{params_as_str(payment.params)}</pre>".html_safe
       end
       row :created_at
       row :updated_at
