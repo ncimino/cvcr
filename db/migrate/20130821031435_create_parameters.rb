@@ -6,6 +6,6 @@ class CreateParameters < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :params, :key, :unique => true
+    add_index :parameters, :key, :unique => true
   end
 end
