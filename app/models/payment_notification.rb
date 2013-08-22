@@ -21,7 +21,7 @@ private
 
   def mark_cart_as_purchased
     @payment_email = Parameter.find_by_key('payment-email')
-    if ( params[:status] == "Completed" && params[:secret] == APP_CONFIG[:paypal_secret] )
+    if ( params[:payment_status] == "Completed" && params[:secret] == APP_CONFIG[:paypal_secret] )
       cart.update_attribute(:purchased_at, Time.now)
       if @payment_email
         #body = params[:address_name]
