@@ -38,6 +38,7 @@ private
           body += "echo '  #{params["quantity#{i}"]} x #{params["item_name#{i}"]}';"
         end
         exec("(#{body}) | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
+        return 0
       rescue
         return 0
       end
@@ -45,6 +46,7 @@ private
       @failure_email = Parameter.find_by_key('failure-email')
       begin
         exec("(echo \"Subject: Payment FAILED\";echo \"#{params}\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@failure_email.value}")
+        return 0
       rescue
         return 0
       end
