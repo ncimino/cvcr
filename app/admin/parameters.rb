@@ -9,7 +9,8 @@ ActiveAdmin.register Parameter do
   form :html => {:multipart => true}  do |f|
     f.inputs "Parameter" do
       f.input :key, :as => :select,
-              :collection => [['payment-email', 'payment-email']]
+              :collection => [['payment-email', 'payment-email'],
+                              ['failure-email', 'failure-email']]
       f.input :value
     end
     f.actions
