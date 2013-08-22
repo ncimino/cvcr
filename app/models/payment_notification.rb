@@ -23,9 +23,9 @@ private
     @payment_email = Parameter.find_by_key('payment-email')
     if ( status == "Completed" && params[:secret] == APP_CONFIG[:paypal_secret] )
       cart.update_attribute(:purchased_at, Time.now)
-      exec("(echo \"Subject: Payment Received\";echo \"#{params_as_str(params)}\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email}")
+      exec("(echo \"Subject: Payment Received\";echo \"#{params_as_str(params)}\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
     else
-      exec("(echo \"Subject: Payment Received\";echo \"#{params_as_str(params)}\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email}")
+      exec("(echo \"Subject: Payment Received\";echo \"#{params_as_str(params)}\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
     end
 
     #@payment_email = Parameter.find_by_key('payment-email')

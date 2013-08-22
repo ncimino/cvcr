@@ -57,7 +57,8 @@ class Cart < ActiveRecord::Base
         :return => return_url,
         :invoice => id,
         :notify_url => notify_url,
-        :cert_id => APP_CONFIG[:paypal_cert_id]
+        :cert_id => APP_CONFIG[:paypal_cert_id],
+        :shipping => number_with_precision(total_shipping, :precision => 2)
     }
     count = 0
     line_items.each_with_index do |item, index|
