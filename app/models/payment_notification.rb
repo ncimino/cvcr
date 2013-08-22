@@ -37,16 +37,14 @@ private
         (1..params[:num_cart_items].to_f).each do |i|
           body += "echo '  #{params["quantity#{i}"]} x #{params["item_name#{i}"]}';"
         end
-        exec("(#{body}) | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
-        return 0
+        system("(#{body}) | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
       rescue
         return 0
       end
     else
       @failure_email = Parameter.find_by_key('failure-email')
       begin
-        exec("(echo \"Subject: Payment FAILED\";echo \"#{params}\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@failure_email.value}")
-        return 0
+        system("(echo \"Subject: Payment FAILED\";echo \"#{params}\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@failure_email.value}")
       rescue
         return 0
       end
