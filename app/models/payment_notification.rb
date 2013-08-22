@@ -20,7 +20,9 @@ class PaymentNotification < ActiveRecord::Base
 private
 
   def mark_cart_as_purchased
-    cart.update_attribute(:purchased_at, Time.now)
+    if status == "Completed"
+      cart.update_attribute(:purchased_at, Time.now)
+    end
 
     #@payment_email = Parameter.find_by_key('payment-email')
     #if ( params[:payment_status] == "Completed" && params[:secret] == APP_CONFIG[:paypal_secret] )
