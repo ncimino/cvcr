@@ -57,8 +57,7 @@ class Cart < ActiveRecord::Base
         :return => return_url,
         :invoice => id,
         :notify_url => notify_url,
-        :cert_id => APP_CONFIG[:paypal_cert_id],
-        "shipping" => total_shipping.round(2)
+        :cert_id => APP_CONFIG[:paypal_cert_id]
     }
     count = 0
     line_items.each_with_index do |item, index|
@@ -74,7 +73,8 @@ class Cart < ActiveRecord::Base
                       "amount_#{count+1}" => total_shipping,
                       "item_name_#{count+1}" => 'Shipping',
                       "item_number_#{count+1}" => '0',
-                      "quantity_#{count+1}" => '1'
+                      "quantity_#{count+1}" => '1',
+                      "shipping" => total_shipping.round(2)
                   })
     encrypt_for_paypal(values)
   end
