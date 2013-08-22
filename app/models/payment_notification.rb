@@ -29,12 +29,15 @@ private
       cart.update_attribute(:purchased_at, Time.now)
       @payment_email = Parameter.find_by_key('payment-email')
       begin
-        #body = "Address:\n#{params[:address_name]}\n#{params[:address_street]}\n#{params[:address_city]} #{params[:address_state]}, #{params[:address_zip]}\n\n"
+        body = "echo 'Address:'"
+        body += params[:address_name]
+        #body += params[:address_street]
+        #body += "#{params[:address_city]} #{params[:address_state]}, #{params[:address_zip]}"
         #body += "Order:\n"
         #(1..params[:num_cart_items]).each do |index|
         #  body += "  #{params["quantity#{index}"]} x #{params["item_name#{index}"]}\n"
         #end
-        exec("(echo \"Subject: Payment Received\";echo \"#{params}\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
+        exec("(echo \"Subject: Payment Received\";#{body}\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
       rescue
         return 0
       end
