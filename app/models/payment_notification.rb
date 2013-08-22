@@ -34,9 +34,8 @@ private
         body += "echo '  #{params[:address_street]}';"
         body += "echo '  #{params[:address_city]} #{params[:address_state]}, #{params[:address_zip]}';"
         body += "echo 'Order:';"
-        (1..params[:num_cart_items]).each do |i|
-          body += "echo 'Order:';"
-          #body += "echo '  #{params["quantity#{i}"]} x #{params["item_name#{i}"]}';"
+        (1..params[:num_cart_items].to_f).each do |i|
+          body += "echo '  #{params["quantity#{i}"]} x #{params["item_name#{i}"]}';"
         end
         exec("(#{body}) | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
       rescue
