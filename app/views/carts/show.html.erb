@@ -1,4 +1,4 @@
-<% title "Shopping Cart - Currently Unavailable" %>
+<% title "Shopping Cart" %>
 
 <div class="container content-holder">
   <h1><%= yield :title  %></h1>
@@ -50,8 +50,7 @@
       <%= form_tag APP_CONFIG[:paypal_url] do %>
         <%= hidden_field_tag :cmd, "_s-xclick" %>
         <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(URI.join(root_url, url_for(@area1)), payment_notifications_url(:secret => APP_CONFIG[:paypal_secret])) %>
-        <input type="image" class="hide" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-        <img class="buy-button" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+        <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
       <% end %>
     </div>
   </div>
