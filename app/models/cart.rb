@@ -58,7 +58,7 @@ class Cart < ActiveRecord::Base
         :invoice => id,
         :notify_url => notify_url,
         :cert_id => APP_CONFIG[:paypal_cert_id],
-        :shipping => total_shipping.round(2)
+        "shipping" => total_shipping.round(2)
     }
     count = 0
     line_items.each_with_index do |item, index|
