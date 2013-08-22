@@ -74,7 +74,7 @@ class Cart < ActiveRecord::Base
                       "item_name_#{count+1}" => 'Shipping',
                       "item_number_#{count+1}" => '0',
                       "quantity_#{count+1}" => '1',
-                      "shipping" => total_shipping.round(2)
+                      "mc_shipping" => total_shipping.round(2)
                   })
     encrypt_for_paypal(values)
   end

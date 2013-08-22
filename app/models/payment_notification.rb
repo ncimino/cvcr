@@ -20,18 +20,20 @@ class PaymentNotification < ActiveRecord::Base
 private
 
   def mark_cart_as_purchased
-    @payment_email = Parameter.find_by_key('payment-email')
-    if ( params[:payment_status] == "Completed" && params[:secret] == APP_CONFIG[:paypal_secret] )
-      cart.update_attribute(:purchased_at, Time.now)
-      if @payment_email
-        #body = params[:address_name]
-        exec("(echo \"Subject: Payment Received\";echo \"start\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
-      end
-    else
-      if @payment_email
-        exec("(echo \"Subject: Payment FAILED\";echo \"start\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
-      end
-    end
+    cart.update_attribute(:purchased_at, Time.now)
+
+    #@payment_email = Parameter.find_by_key('payment-email')
+    #if ( params[:payment_status] == "Completed" && params[:secret] == APP_CONFIG[:paypal_secret] )
+    #  cart.update_attribute(:purchased_at, Time.now)
+    #  if @payment_email
+    #    #body = params[:address_name]
+    #    exec("(echo \"Subject: Payment Received\";echo \"start\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
+    #  end
+    #else
+    #  if @payment_email
+    #    exec("(echo \"Subject: Payment FAILED\";echo \"start\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
+    #  end
+    #end
 
     #@payment_email = Parameter.find_by_key('payment-email')
     #if !@payment_email.nil?
