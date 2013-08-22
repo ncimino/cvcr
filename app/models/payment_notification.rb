@@ -24,20 +24,20 @@ private
     #  cart.update_attribute(:purchased_at, Time.now)
     #end
 
-
     if ( params[:payment_status] == "Completed" && params[:secret] == APP_CONFIG[:paypal_secret] )
       cart.update_attribute(:purchased_at, Time.now)
       @payment_email = Parameter.find_by_key('payment-email')
       begin
-        body = "echo 'Address';"
+        body = "echo 'Subject: Payment Received - Invoice: #{cart.id}';"
+        body += "echo 'Address';"
         body += "echo '  #{params[:address_name]}';"
         body += "echo '  #{params[:address_street]}';"
         body += "echo '  #{params[:address_city]} #{params[:address_state]}, #{params[:address_zip]}';"
         body += "echo 'Order:';"
         (1..params[:num_cart_items]).each do |index|
-          body += "echo '  #{params["quantity#{index}"]} x #{params["item_name#{index}"]}';"
+          body += "echo '  #{params["quantity#{index}".to_sym]} x #{params["item_name#{index}".to_sym]}';"
         end
-        exec("(echo 'Subject: Payment Received';#{body}) | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
+        exec("(#{body}) | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
       rescue
         return 0
       end
