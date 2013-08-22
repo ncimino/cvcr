@@ -10,7 +10,8 @@ ActiveAdmin.register Parameter do
     f.inputs "Parameter" do
       f.input :key, :as => :select,
               :collection => [['payment-email', 'payment-email'],
-                              ['failure-email', 'failure-email']]
+                              ['failure-email', 'failure-email']],
+              :hint => 'Seperate with a space for multiple'
       f.input :value
     end
     f.actions

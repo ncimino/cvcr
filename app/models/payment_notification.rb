@@ -29,11 +29,11 @@ private
       @payment_email = Parameter.find_by_key('payment-email')
       begin
         body = "echo 'Subject: Payment Received - Invoice: #{cart.id}';"
-        body += "echo 'Address';"
+        body += "echo '-- Address --';"
         body += "echo '  #{params[:address_name]}';"
         body += "echo '  #{params[:address_street]}';"
         body += "echo '  #{params[:address_city]} #{params[:address_state]}, #{params[:address_zip]}';"
-        body += "echo 'Order:';"
+        body += "echo '-- Order --';"
         (1..params[:num_cart_items].to_f).each do |i|
           body += "echo '  #{params["quantity#{i}"]} x #{params["item_name#{i}"]}';"
         end
