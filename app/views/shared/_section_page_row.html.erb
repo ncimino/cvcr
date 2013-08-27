@@ -4,5 +4,5 @@
   <% if !page.description.nil? && !page.description.empty?%>
     <%= link_to ' - ' + strip_tags(page.description), page %>
   <% end %>
-  <%= link_to ' - ' + number_to_currency(page.price), page if page.instance_of?(Product) %>
+  <%= link_to ('<span style="color:white;font-weight:bold;margin:5px;" class="pull-right">' + number_to_currency(page.price) + '</span>').html_safe, page if page.instance_of?(Product) %>
 </td></tr>

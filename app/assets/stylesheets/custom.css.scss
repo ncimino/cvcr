@@ -32,7 +32,7 @@ a:hover {
   position: relative;
   left: 305px;
   margin-right: -150px;
-  width: 0;
+  width: 200px;
   height: 0;
 }
 
@@ -40,7 +40,7 @@ a:hover {
   position: relative;
   left: -120px;
   margin-right: -150px;
-  width: 0;
+  width: 240px;
   height: 0;
 }
 
@@ -98,6 +98,7 @@ a:hover {
 
 .section-row-product {
   height: 75px;
+  margin-left: 3px;
 }
 
 .section-row {
@@ -307,8 +308,8 @@ div.main-nav-bar ul.nav > li {
   //background-image: image-url('content_bg.png');
   -moz-border-radius: 5px 0;
   border-radius: 5px 5px 0 0;
-  -webkit-box-shadow: 0 0 3px rgba(134,116,104,1);
-  box-shadow: 0 0 5px rgb(255,255,255);
+  -webkit-box-shadow: 2px 2px 3px rgba(134,116,104,1);
+  box-shadow: 0 0 2px rgb(255,255,255);
   border-right: 1px solid rgba(255, 255, 255, 0.27);
   border-left: 1px solid rgba(255, 255, 255, 0.27);
   border-top: 1px solid black;
