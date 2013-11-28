@@ -45,13 +45,11 @@ gem 'cucumber-rails', :group => 'test, development'
 gem 'devise'
 
 gem 'meta_search', :group => 'test'
-gem 'activeadmin'
+gem 'activeadmin', '>= 0.6.2'
 
 # was getting an error and added these to workaround the issue
 gem 'execjs'
 gem 'therubyracer'
-
-gem 'ckeditor'
 
 gem 'omniauth'
 gem 'omniauth-github'

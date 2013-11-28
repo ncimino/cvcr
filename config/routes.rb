@@ -19,6 +19,8 @@ Cvcr::Application.routes.draw do
   match '/cart/new' => 'carts#destroy'
   #match '/cart' => 'carts#show'
 
+  match '/test' => 'test#show'
+
   get 'sessions/new'
   #get 'registrations/edit'
   #get 'registrations/new'

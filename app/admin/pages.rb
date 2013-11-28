@@ -29,7 +29,7 @@ ActiveAdmin.register Page do
                 :input_html => { :multiple => true, :class => 'image-picker' },
                 :include_blank => false, :hint => "If _no_ pictures are selected, then a carousel will _not_ be displayed on this page"
       end
-      f.input :content, :as => :ckeditor
+      f.input :content, :input_html => { :id => "ckeditor" } #:as => :ckeditor
       f.input :description, :hint => "This is the brief description that shows on menus"
     end
     f.actions
