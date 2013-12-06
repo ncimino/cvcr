@@ -18,6 +18,7 @@ body {
   color: $lightbrown;
   min-width: 940px;
   padding: 153px 0 85px 0;
+  @media (max-width: 979px) { min-height: 1500px }
 }
 
 a {
