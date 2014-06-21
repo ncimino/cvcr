@@ -31,7 +31,7 @@
               <% if !img.image.file.nil? && img.image.file.exists? %>
                 <div class="item <%= "active" if defined? first %>">
                   <% first="done" %>
-                  <img src="<%=	img.image.url.to_s %>" alt="<%=	img.alt.to_s %>">
+                  <img class="carousel-img" src="<%=	img.image.url.to_s %>" alt="<%=	img.alt.to_s %>">
                   <% unless img.title.blank? && img.description.blank? && img.button_text.blank? %>
                     <div class="container">
                       <div class="carousel-caption">
