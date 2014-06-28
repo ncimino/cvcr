@@ -15,6 +15,7 @@ Cvcr::Application.routes.draw do
   match '/line_items/:id/increment' => 'line_items#increment'
   match '/line_items/:id/decrement' => 'line_items#decrement'
   match '/line_items/:id/destroy' => 'line_items#destroy'
+  match '/line_items/:id/set_grind' => 'line_items#set_grind'
   match '/cart' => 'carts#show'
   match '/cart/new' => 'carts#destroy'
   #match '/cart' => 'carts#show'

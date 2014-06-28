@@ -1,4 +1,5 @@
 class Cart < ActiveRecord::Base
+
   has_many :line_items
 
   def total_price
@@ -29,27 +30,33 @@ class Cart < ActiveRecord::Base
     line_items.to_a.sum(&:quantity)
   end
 
-  def paypal_url(return_url, notify_url)
-    values = {
-        :business => 'nik.cimino-facilitator@gmail.com',
-        :cmd => '_cart',
-        :upload => 1,
-        :return => return_url,
-        :invoice => id,
-        :notify_url => notify_url
-    }
-    line_items.each_with_index do |item, index|
-      values.merge!({
-                        "amount_#{index+1}" => item.unit_price,
-                        "item_name_#{index+1}" => item.product.name,
-                        "item_number_#{index+1}" => item.id,
-                        "quantity_#{index+1}" => item.quantity
-                    })
-    end
-    'https://www.sandbox.paypal.com/cgi-bin/webscr?' + values.to_query
-  end
+  # keep for unencrypted flows - doubt we'll ever need
+# def paypal_url(return_url, notify_url)
+#   values = {
+#       :business => 'nik.cimino-facilitator@gmail.com',
+#       :cmd => '_cart',
+#       :upload => 1,
+#       :return => return_url,
+#       :invoice => id,
+#       :notify_url => notify_url,
+#
+#   }
+#   line_items.each_with_index do |item, index|
+#     values.merge!({
+#                       "amount_#{index+1}" => item.unit_price,
+#                       "item_name_#{index+1}" => "#{item.product.name} - #{item.grind}",
+#                       "item_number_#{index+1}" => item.id,
+#                       "quantity_#{index+1}" => item.quantity
+#                   })
+#   end
+#   'https://www.sandbox.paypal.com/cgi-bin/webscr?' + values.to_query
+# end
 
+
+# best API key/value maching I've found is at:
+# https://developer.paypal.com/webapps/developer/docs/classic/paypal-payments-standard/integration-guide/Appx_websitestandard_htmlvariables/#id08A6HI0J0VU
   def paypal_encrypted(return_url, notify_url)
+
     values = {
         :business => APP_CONFIG[:paypal_email],
         :cmd => '_cart',
@@ -59,26 +66,28 @@ class Cart < ActiveRecord::Base
         :notify_url => notify_url,
         :cert_id => APP_CONFIG[:paypal_cert_id]
     }
-    count = 0
+
     line_items.each_with_index do |item, index|
+      item_name = item.product.name
+      if item.product.supports_grind
+        item_name += " - #{item.grind}"
+      end
       values.merge!({
-                        "amount_#{index+1}" => item.unit_price,
-                        "item_name_#{index+1}" => item.product.name,
-                        "item_number_#{index+1}" => item.id,
-                        "quantity_#{index+1}" => item.quantity
-                    })
-      count = index+1
+        "amount_#{index+1}" => item.unit_price,
+        "item_name_#{index+1}" => item_name,
+        "item_number_#{index+1}" => item.id,
+        "quantity_#{index+1}" => item.quantity
+      })
     end
+
     values.merge!({
-                      "amount_#{count+1}" => total_shipping,
-                      "item_name_#{count+1}" => 'Shipping',
-                      "item_number_#{count+1}" => '0',
-                      "quantity_#{count+1}" => '1'
-                  })
+      "handling_cart" => total_shipping
+    })
+
     encrypt_for_paypal(values)
   end
 
-  PAYPAL_CERT_PEM = File.read("#{Rails.root}/certs/paypal_cert.pem")
+  PAYPAL_CERT_PEM = File.read("#{Rails.root}/#{APP_CONFIG[:paypal_cert]}")
   APP_CERT_PEM = File.read("#{Rails.root}/certs/app_cert.pem")
   APP_KEY_PEM = File.read("#{Rails.root}/certs/app_key.pem")
 

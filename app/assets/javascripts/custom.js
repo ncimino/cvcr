@@ -13,4 +13,12 @@ $(document).ready(function () {
   $('.buy-button').click(function() {
     alert('On-line purchases are currently disabled.');
   });
+  $('form.submit_on_change').each(function(idx,form){
+    $(form).find('select,input').each(function(idx,element){
+      $(element).change(function(){
+        $(form).submit();
+        return false;
+      });
+    });
+  });
 });

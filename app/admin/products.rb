@@ -12,13 +12,15 @@ ActiveAdmin.register Product do
   end
 
   form :html => {:multipart => true}  do |f|
+    f.actions
     @product = Product.find(params[:id]) unless params[:id].nil?
     @images = @product.image_handlers unless @product.nil?
     f.inputs "Product" do
       f.input :name
       f.input :active, :as => :hidden
       f.input :price
-      f.input :content, :as => :ckeditor
+      f.input :supports_grind
+      f.input :content, :input_html => { :class => 'ckeditor' } #, :as => :ckeditor
       f.input :description, :hint => "This is the brief description that shows on menus"
       f.input :sections, :hint => "Hold CTRL+Click to deselect"
       if @images.nil?
@@ -44,6 +46,7 @@ ActiveAdmin.register Product do
       row :price do |product|
         number_to_currency(product.price, :unit => "$")
       end
+      row :supports_grind
       row :description
       row :content do |page|
         page.content.html_safe

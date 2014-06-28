@@ -1,0 +1,76 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+  Version="10.0"
+  VendorName="SlickEdit"
+  TemplateName="Ruby"
+  WorkingDir=".">
+  <Files>
+    <Folder
+      Name="Source Files"
+      Filters="*.rb;*.rby"/>
+    <Folder
+      Name="Other Files"
+      Filters="">
+      <F
+        N="*.*"
+        Recurse="1"
+        Excludes=""/>
+    </Folder>
+  </Files>
+  <Config
+    Name="Debug"
+    DebugCallbackName="rdbgp"
+    Type="ruby"
+    OutputFile=""
+    CompilerConfigName="">
+    <Menu>
+      <Target
+        Name="Execute"
+        MenuCaption="E&amp;xecute"
+        Dialog="_ruby_options_form Run"
+        CaptureOutputWith="ProcessBuffer"
+        SaveOption="SaveNone"
+        RunFromDir="%rw"
+        Deletable="0">
+        <Exec CmdLine='ruby %(SLICKEDIT_RUBY_EXECUTE_ARGS) "%f"'/>
+      </Target>
+      <Target
+        Name="Debug"
+        MenuCaption="&amp;Debug"
+        Dialog="_ruby_options_form Debug"
+        CaptureOutputWith="ProcessBuffer"
+        SaveOption="SaveNone"
+        RunFromDir="%rw"
+        Deletable="0">
+        <Exec
+          CmdLine="ruby_debug"
+          Type="Slick-C"/>
+      </Target>
+      <Target
+        Name="Ruby Options"
+        MenuCaption="Ruby &amp;Options"
+        ShowOnMenu="HideIfNoCmdLine"
+        Deletable="0">
+        <Exec
+          CmdLine="rubyoptions"
+          Type="Slick-C"/>
+      </Target>
+    </Menu>
+    <List Name="Ruby Options">
+      <Item
+        Name="DefaultFile"
+        Value=""/>
+    </List>
+    <List Name="rdbgp Options">
+      <Item
+        Name="ServerHost"
+        Value="127.0.0.1"/>
+      <Item
+        Name="ServerPort"
+        Value="0"/>
+      <Item
+        Name="ListenInBackground"
+        Value="1"/>
+    </List>
+  </Config>
+</Project>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821031435) do
+ActiveRecord::Schema.define(:version => 20140628200649) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -80,14 +80,6 @@ ActiveRecord::Schema.define(:version => 20130821031435) do
   add_index "image_handlers_pages", ["image_handler_id", "page_id"], :name => "index_image_handlers_pages_on_image_handler_id_and_page_id", :unique => true
   add_index "image_handlers_pages", ["page_id"], :name => "index_image_handlers_pages_on_page_id"
 
-  create_table "image_handlers_parts", :id => false, :force => true do |t|
-    t.integer "part_id"
-    t.integer "image_handler_id"
-  end
-
-  add_index "image_handlers_parts", ["image_handler_id", "part_id"], :name => "index_image_handlers_parts_on_image_handler_id_and_part_id"
-  add_index "image_handlers_parts", ["part_id"], :name => "index_image_handlers_parts_on_part_id"
-
   create_table "image_handlers_products", :id => false, :force => true do |t|
     t.integer "product_id"
     t.integer "image_handler_id"
@@ -101,8 +93,9 @@ ActiveRecord::Schema.define(:version => 20130821031435) do
     t.integer  "product_id"
     t.integer  "cart_id"
     t.integer  "quantity"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                                          :null => false
+    t.datetime "updated_at",                                                          :null => false
+    t.string   "grind",                                     :default => "Whole Bean"
   end
 
   create_table "main_areas", :force => true do |t|
@@ -123,12 +116,12 @@ ActiveRecord::Schema.define(:version => 20130821031435) do
   create_table "pages", :force => true do |t|
     t.string   "name"
     t.string   "title"
+    t.string   "location"
     t.text     "content"
     t.string   "url"
     t.integer  "ordinal"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "location"
     t.text     "description"
   end
 
@@ -147,14 +140,7 @@ ActiveRecord::Schema.define(:version => 20130821031435) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "params", :force => true do |t|
-    t.string   "key"
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "params", ["key"], :name => "index_params_on_key", :unique => true
+  add_index "parameters", ["key"], :name => "index_parameters_on_key", :unique => true
 
   create_table "payment_notifications", :force => true do |t|
     t.text     "params"
@@ -167,13 +153,14 @@ ActiveRecord::Schema.define(:version => 20130821031435) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
-    t.decimal  "price",       :precision => 10, :scale => 2
+    t.decimal  "price",          :precision => 10, :scale => 2
     t.text     "description"
     t.string   "image"
     t.boolean  "active"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
     t.text     "content"
+    t.boolean  "supports_grind",                                :default => true
   end
 
   add_index "products", ["active"], :name => "index_active_products"

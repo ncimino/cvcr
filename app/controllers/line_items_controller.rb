@@ -3,13 +3,21 @@ class LineItemsController < ApplicationController
     @product = Product.find(params[:product_id])
     @cart = @current_cart
 
-    if !@cart.line_items.exists?(:product_id => @product.id)
-      @line_item = LineItem.create!(:cart => @cart, :product => @product, :quantity => 1, :unit_price => @product.price)
-    else
-      @cart.line_items.find(:first, :conditions =>{:product_id => @product.id}).increment! :quantity
-    end
+#   if !@cart.line_items.exists?(:product_id => @product.id)
+      @line_item = LineItem.create!( :cart => @cart, :product => @product, :quantity => 1, :unit_price => @product.price )
+#   else
+#     @cart.line_items.find(:first, :conditions =>{:product_id => @product.id}).increment! :quantity
+#   end
 
-    flash[:success] = "Added #{@product.name} to cart."
+    flash[:success] = "Added '#{@product.name}' to cart."
+    redirect_to :cart
+  end
+
+  def set_grind
+    @line_item = LineItem.find(params[:id])
+    @line_item.update_attribute :grind, params[:grind]
+
+    flash[:success] = "Grind type set to '#{@line_item.grind}' for '#{@line_item.product.name}'."
     redirect_to :cart
   end
 
@@ -18,7 +26,7 @@ class LineItemsController < ApplicationController
     @line_item.increment! :quantity
     @cart = @current_cart
 
-    flash[:success] = "Added #{@line_item.product.name} to cart."
+    flash[:success] = "Added '#{@line_item.product.name}' to cart."
     redirect_to cart_url
   end
 

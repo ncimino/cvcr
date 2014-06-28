@@ -38,14 +38,21 @@ private
           body += "echo '  #{params["quantity#{i}"]} x #{params["item_name#{i}"]}';"
         end
         system("(#{body}) | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@payment_email.value}")
-      rescue
+        if ! Rails.env.production?
+          puts "\n--EMAIL--\n#{body}"
+        end
+      rescue StandardError => exception
+        puts " !! caught exception while sending notification email:"
+        puts exception.message
         return 0
       end
     else
       @failure_email = Parameter.find_by_key('failure-email')
       begin
         system("(echo \"Subject: Payment FAILED\";echo \"#{params}\") | sendmail -f noreply@#{Rails.application.config.action_mailer.default_url_options[:host]} #{@failure_email.value}")
-      rescue
+      rescue StandardError => exception
+        puts " !! caught exception while sending _failure_ notification email:"
+        puts exception.message
         return 0
       end
     end

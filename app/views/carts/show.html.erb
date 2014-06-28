@@ -5,6 +5,7 @@
   <table class="table table-striped">
     <tr>
       <th>Product</th>
+      <th>Options</th>
       <th>Qty</th>
       <th class="price">Unit Price</th>
       <th class="price">Full Price</th>
@@ -12,6 +13,14 @@
     <% for line_item in @cart.line_items %>
       <tr class="<%= cycle :odd, :even %>">
         <td><%= link_to line_item.product.name, line_item.product %></td>
+        <td class="options">
+          <% if line_item.product.supports_grind %>
+            <%= form_for line_item, :html => { :class => "submit_on_change" }, :url => { :action => "set_grind", :controller => "line_items", :id => line_item } do |grind_form| %>
+              <%= select_tag( :grind, options_for_select( [ [ "Whole Bean", "Whole Bean" ], [ "Ground", "Ground" ] ], selected: "#{line_item.grind}" ).html_safe  ) %>
+              <%#= grind_form.submit() %>
+            <% end %>
+          <% end %>
+        </td>
         <td class="qty">
           <% if line_item.quantity > 1 %>
             <%= link_to '<i class="icon-minus-sign"></i>'.html_safe, :controller => 'line_items', :action => 'decrement', :id => line_item %>
@@ -32,10 +41,11 @@
       <td><i>Shipping</i></td>
       <td></td>
       <td></td>
+      <td></td>
       <td class="price"><%= number_to_currency(@cart.total_shipping) %>&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
     <tr>
-      <td class="total price" colspan="4">
+      <td class="total price" colspan="5">
         Total: <%= number_to_currency @cart.total_price %> &nbsp;&nbsp;&nbsp;
       </td>
     </tr>
@@ -49,8 +59,12 @@
     <div class="span6 text-right">
       <%= form_tag APP_CONFIG[:paypal_url] do %>
         <%= hidden_field_tag :cmd, "_s-xclick" %>
-        <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(URI.join(root_url, url_for(@area1)), payment_notifications_url(:secret => APP_CONFIG[:paypal_secret])) %>
-        <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+        <% if Rails.env.production? %>
+          <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(URI.join(root_url, url_for(@area1)), payment_notifications_url(:secret => APP_CONFIG[:paypal_secret])) %>
+        <% else %>
+          <%= hidden_field_tag :encrypted, @cart.paypal_encrypted(URI.join(root_url, url_for(@area1)), "http://67.173.246.78:3000/payment_notifications?secret=supersecret") %>
+        <% end %>
+        <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
       <% end %>
     </div>
   </div>

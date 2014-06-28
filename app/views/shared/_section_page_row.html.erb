@@ -2,7 +2,7 @@
   <%= image_tag(page.image_handlers.first.image.url(:thumb), :class => 'pull-right section-row-product')  if page.instance_of?(Product) %>
   <%= render :partial => 'shared/page_link', :locals => { :page => page, :classes => 'section-row' } %>
   <% if !page.description.nil? && !page.description.empty?%>
-    <%= link_to ' - ' + strip_tags(page.description), page %>
+    <%= link_to ' - ' + strip_tags(page.description), defined?(page.url) && !page.url.empty? ? page.url : page %>
   <% end %>
   <%= link_to ('<span style="color:white;font-weight:bold;margin:5px;" class="pull-right">' + number_to_currency(page.price) + '</span>').html_safe, page if page.instance_of?(Product) %>
 </td></tr>

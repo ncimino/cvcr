@@ -1,0 +1,134 @@
+[Global]
+CurrentProject=cvcr.vpj
+[ProjectDates]
+cvcr.vpj=20140627045108000
+[ActiveConfig]
+cvcr.vpj=Debug
+[TreeExpansion2]
+-@ cvcr.vpj
+  + Source Files
+  - Other Files
+    - app
+      - admin
+      - assets
+        + images
+          + gray-social-media-icons
+            + 128x128
+            + 32x32
+            + 48x48
+            + 64x64
+            + 96x96
+        - javascripts
+        - stylesheets
+      - controllers
+      + helpers
+      - models
+      + uploaders
+      - views
+        - carts
+        + devise
+          + confirmations
+          + mailer
+          + passwords
+          + registrations
+          + sessions
+          + shared
+          + unlocks
+        - layouts
+        + main_areas
+        + pages
+        + products
+        + registrations
+        + sections
+        + shared
+        + test
+    + certs
+    - config
+      - environments
+      - initializers
+      + locales
+    - db
+      - migrate
+    + log
+    + public
+      + uploads
+        + image_handler
+          + image
+            + 1
+            + 10
+            + 11
+            + 14
+            + 15
+            + 16
+            + 17
+            + 18
+            + 2
+            + 20
+            + 21
+            + 22
+            + 24
+            + 3
+            + 4
+            + 6
+            + 7
+            + 8
+            + 9
+        + tmp
+          + 20130611-0151-11374-8676
+          + 20130611-0153-11374-0265
+          + 20130611-0155-11717-6580
+          + 20130730-1349-22164-7827
+          + 20130802-1331-14649-4942
+          + 20130802-1335-14649-6198
+          + 20130802-1336-14649-0309
+          + 20130802-1343-14649-7958
+          + 20130802-1350-14649-2831
+          + 20130802-1352-14649-4638
+          + 20130802-1352-14649-6767
+          + 20130802-1353-14649-1010
+          + 20131129-1047-12430-3705
+    + test
+      + fixtures
+      + functional
+      + performance
+      + unit
+        + helpers
+    + tmp
+      + cache
+        + sass
+          + 0acae2b06e74e746c3cdcceea81a0c9ce7f19f21
+          + 1e8feb270b05c2fa2477509f16db96313f424732
+          + 208d61ceba8624bd26aab3711b15c2d98c90ed41
+          + 2f2c34514d9f19762d075fbe76fd91c68fad6264
+          + 32530becbec798429a5baf2bc075bce9f4c4799b
+          + 39755bd47875abeaaba77a5f2ce19793f7c16751
+          + 7750bdd9433f6f805068b63b40d4a7e84feb9e5e
+          + 96bf3369ffe0bb9aa46ba8bbff8c775f14cc4621
+          + a865145c2a010326d3ed98054706c78c51969048
+          + b1e9d4448baa287b28baea93dd1d33e02dc73874
+          + e644edc5525e77bc706233c5b731c31b4d9a0801
+      + pids
+scroll:93
+[State]
+SCREEN: 1920 1080 214 106 1643 883 0 0 N 0 0 0 0 1620 529 0
+CWD: db/migrate
+FILEHIST: 9
+app/views/shared/_page_link.html.erb
+app/views/shared/_section_page_row.html.erb
+app/assets/stylesheets/custom.css.scss
+app/models/line_item.rb
+app/controllers/carts_controller.rb
+app/controllers/line_items_controller.rb
+app/models/payment_notification.rb
+app/models/cart.rb
+db/migrate/20130618054203_create_image_handlers_products.rb
+TBCLASS: 0 0
+DEBUG: 0 0 1 0 0 0 rdbgp
+-10AddGrindToLineItemschangedb/migrate/20140621052143_add_grind_to_line_items.rb310
+DEBUG2: 1
+-10AddGrindToLineItemschangedb/migrate/20140621052143_add_grind_to_line_items.rb31022
+classAddGrindToLineItems<ActiveRecord::Migration
+defchange
+add_column:line_items,:grind,:string,default:'WholeBean'
+end
+end
