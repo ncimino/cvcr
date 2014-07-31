@@ -87,7 +87,8 @@ class Cart < ActiveRecord::Base
     encrypt_for_paypal(values)
   end
 
-  PAYPAL_CERT_PEM = File.read("#{Rails.root}/#{APP_CONFIG[:paypal_cert]}")
+  #PAYPAL_CERT_PEM = File.read("#{Rails.root}/#{APP_CONFIG[:paypal_cert]}")
+  PAYPAL_CERT_PEM = File.read("#{Rails.root}/certs/paypal_cert.pem")
   APP_CERT_PEM = File.read("#{Rails.root}/certs/app_cert.pem")
   APP_KEY_PEM = File.read("#{Rails.root}/certs/app_key.pem")
 
