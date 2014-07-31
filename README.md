@@ -1,4 +1,6 @@
-cvcr
+CVCR
 ====
 
 Carbon Valley Coffee Roasters
+
+
